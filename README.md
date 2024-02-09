@@ -20,7 +20,16 @@
 
 > Esse é um projeto da disciplina TEC 499 - Módulo Integrador Sistemas Digitais, no qual ocorre o desenvolvimento de um jogo inspirado no clássico breakout. Utiliza o acelerômetro do DE1-SoC para controlar o jogador e botões para funções de jogo e a visualização é feita através da interface VGA em monitor CRT.
 
+## Download do repositório
+
+
+```
+gh repo clone nailasuely/breakout-problem3
+```
+
 </div>
+
+![Prancheta 1 (4)](https://github.com/nailasuely/breakout-problem3/assets/98486996/eafa25d4-abd4-4586-8083-8d9f7cfdd458)
 
 ## Sumário
 - [Apresentação](#apresentação)
@@ -35,8 +44,11 @@
 - [Equipe](#equipe)
 - [Referências](#referências)
 
-
 ![Prancheta 1 (4)](https://github.com/nailasuely/breakout-problem3/assets/98486996/eafa25d4-abd4-4586-8083-8d9f7cfdd458)
+
+## Introdução
+
+
 
 ## Equipe
 

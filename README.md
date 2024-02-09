@@ -48,17 +48,23 @@ gh repo clone nailasuely/breakout-problem3
 
 ## Introdução
 
-
 ## Equipe
 
-## Equipe
-
-<div style="display:flex;">
-    <img src="https://github.com/nailasuely/breakout-problem3/assets/98486996/238a5d83-164e-466d-bfdb-bb7da08a69bc" style="width: 100px; height: auto; cursor: pointer;" onclick="window.open('https://github.com/nailasuely', '_blank')">
-    <img src="https://github.com/nailasuely/breakout-problem3/assets/98486996/12db2820-494f-4404-8049-04b10e90803a" style="width: 100px; height: auto; cursor: pointer;" onclick="window.open('https://github.com/rhianpablo11', '_blank')">
-    <img src="https://github.com/nailasuely/breakout-problem3/assets/98486996/f597fb3b-1980-4042-b94b-289b80da1b7b" style="width: 100px; height: auto; cursor: pointer;" onclick="window.open('https://github.com/AmandaLimaB', '_blank')">
-    <img src="https://github.com/nailasuely/breakout-problem3/assets/98486996/4ebc033b-05e1-4e70-8cbe-92572ada32d1" style="width: 100px; height: auto; cursor: pointer;" onclick="window.open('https://github.com/joaogabrielaraujo', '_blank')">
+<div>
+    <a href="https://github.com/nailasuely" target="_blank" style="display: inline-block;">
+        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/naila.png" style="width: 100px; height: auto; cursor: pointer;">
+    </a>
+    <a href="https://github.com/rhianpablo11" target="_blank" style="display: inline-block;">
+        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/rhian.png" style="width: 100px; height: auto; cursor: pointer;">
+    </a>
+    <a href="https://github.com/AmandaLimaB" target="_blank" style="display: inline-block;">
+        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/amanda.png" style="width: 100px; height: auto; cursor: pointer;">
+    </a>
+    <a href="https://github.com/joaogabrielaraujo" target="_blank" style="display: inline-block;">
+        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/joaoGabriel.png" style="width: 100px; height: auto; cursor: pointer;">
+    </a>
 </div>
+
 
 ## Tutor
 

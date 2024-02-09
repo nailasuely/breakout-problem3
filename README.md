@@ -50,21 +50,14 @@ gh repo clone nailasuely/breakout-problem3
 
 ## Equipe
 
-<div>
-    <a href="https://github.com/nailasuely" target="_blank" style="display: inline-block;">
-        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/naila.png" style="width: 100px; height: auto; cursor: pointer;">
-    </a>
-    <a href="https://github.com/rhianpablo11" target="_blank" style="display: inline-block;">
-        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/rhian.png" style="width: 100px; height: auto; cursor: pointer;">
-    </a>
-    <a href="https://github.com/AmandaLimaB" target="_blank" style="display: inline-block;">
-        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/amanda.png" style="width: 100px; height: auto; cursor: pointer;">
-    </a>
-    <a href="https://github.com/joaogabrielaraujo" target="_blank" style="display: inline-block;">
-        <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/joaoGabriel.png" style="width: 100px; height: auto; cursor: pointer;">
-    </a>
-</div>
+[//]: contributor-faces
 
+<a href="https://github.com/nailasuely"><img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/naila.png" title="naila" width="100"></a>
+<a href="https://github.com/rhianpablo11"><img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/rhian.png" title="rhian" width="100" ></a>
+<a href="https://github.com/AmandaLimaB"><img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/amanda.png" title="amanda" width="100" ></a>
+<a href="https://github.com/joaogabrielaraujo"><img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/joaoGabriel.png" title="joao" width="100" ></a>
+
+[//]: contributor-faces
 
 ## Tutor
 

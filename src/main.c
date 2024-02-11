@@ -62,14 +62,6 @@ int main() {
 }
 
 
-void gerar_bola_quadrada(int x, int y){
-	video_box(x, y, x+10, y+10, 0xFFFFFF);
-	video_box(100, 100, 130, 110, 0xFFFFFF);
-	video_box(200, 200, 230, 207, 0xFFFFFF);
-	video_box(232, 200, 264, 207, 0xFFFFFF);
-	video_box(166, 200, 198, 207, 0xFFFFFF);
-}
-
 void moverRaquete() {
     
     int ptr_x;
@@ -88,10 +80,11 @@ void moverRaquete() {
 }
 
 void gerar_bordas(){
+    int larguraTela, alturaTela, char_x, char_y;
 	video_read (&larguraTela, &alturaTela, &char_x, &char_y);
 	
 	video_box(1, 1,larguraTela-1, alturaTela-1, 0xFF00);
-	video_box(6, 6,larguraTela-6, alturaTela-6, 0x000000);
+	video_box(6, 6,larguraTela-6, alturaTela-6, 0x0000);
 }
 
 /* 
@@ -139,4 +132,96 @@ void renderBlocos() {
             }
         }
     }
+}
+
+
+/*
+Serve para poder escrever na tela a palavra score
+fonte usada tem 20px de largura e 20px de altura
+*/
+void palavra_score(){
+	//x1, y1, x2, y2
+	//começa x
+	//começa y
+	//termina x
+	//termina y
+
+	//S
+	video_box(8,3,20,7,0xFFFF); //perna alta do S
+	video_box(4,7,8,11,0xFFFF); //perna comprima do S
+	video_box(8,11,20,15,0xFFFF); //perna meio do S
+	video_box(20,15,24,19,0xFFFF); //perna comprima do S
+	video_box(4,19,20,23,0xFFFF); //perna alta do S
+
+	//C
+	video_box(22,3,42,7,0xFFFF); //lateral superior do C
+	video_box(22,3,26,23,0xFFFF); //perna comprida do C
+	video_box(22,19,42,23,0xFFFF); //lateral inferior do C
+
+	//O
+	video_box(48,3,62,7,0xFFFF); //lateral superior do O
+	video_box(44,7,48,19,0xFFFF); //lateral direita do O
+	video_box(62,7,66,19,0xFFFF); //lateral esquerda do O
+	video_box(48,19,62,23,0xFFFF); //lateral inferior do O
+
+	//R
+	video_box(64,3,84,23,0xFFFF); //parte de cima do R
+    video_box(64,3,68,23,0xFFFF); //lateral direita do R
+    video_box(80,3,84,13,0xFFFF); //parte de cima do R
+    video_box(64,9,84,13,0xFFFF); //parte de cima do R
+    video_box(64,3,84,23,0xFFFF); //parte de cima do R
+    video_line(64,13,84,23,0xFFFF);
+
+	//E
+	video_box(86,3,106,7,0xFFFF); //lateral superior do E
+	video_box(86,11,106,15,0xFFFF); //lateral meio do E
+	video_box(86,19,106,23,0xFFFF); //lateral inferior do E
+	video_box(86,3,90,23,0xFFFF); //lateral direita do E
+}
+
+/*
+Serve para poder apresentar na tela o texto de pause
+Parametros:
+    Boolean - indicar se esta em pause ou nao e apresentar na tela ou nao
+*/
+void informacao_pause(int boolean){
+	char pause = "paused";
+	char play = "played";
+	if(boolean){
+		video_text(200, 3, pause);
+	} else{
+		video_text(200, 3, play);
+	}
+}
+
+/*
+pensar em como fazer para fazer essa bola redonda
+por enquanto ela é quadrada, e se identifica como redonda
+*/
+void gerar_bola_quadrada(int x, int y){
+	video_box(x, y, x+10, y+10, 0xFFFFFF);
+}
+
+
+/*
+fechar a porta dos hardwares que foram utilizados
+*/
+void fechar_hardwares(){
+	accel_close();
+	video_close();
+}
+
+/*
+realizar abertura e configuração dos hardwares a serem utilizados
+*/
+void iniciar_hardwares(){
+	int larguraTela, alturaTela, char_x, char_y;
+	int resolucao = 1;
+	int range = 16;
+	accel_open();
+    video_open();
+    accel_init();
+    video_read (&larguraTela, &alturaTela, &char_x, &char_y); // get screen & text size
+    accel_format(resolucao, range);
+    accel_calibrate();
 }

@@ -32,19 +32,9 @@ int velocidadeBolaX, velocidadeBolaY;
 
 
 int main() {
-    int a=1; int b=2;
+    iniciar_hardwares();
 
-
-    ccel_open();
-    video_open();
-    accel_init();
-    video_read (&larguraTela, &alturaTela, &char_x, &char_y); // get screen & text size
-    accel_format(a, b);
-    accel_calibrate();
-    x1=screen_x - 310;
-	y1 = screen_y;
-
-    video_clear();
+    limparTela();
     gerar_bordas();
     inicializarBlocos();
     renderBlocos();
@@ -52,29 +42,36 @@ int main() {
 
     while (1) {
         moverRaquete();
-
-
     }
-	accel_close();
-    video_close();
 
+	fechar_hardwares();
     return 0;
 }
 
 
 void moverRaquete() {
-    
-    int ptr_x;
+    int posicaoRaqueteX = 155;
+    int y1 = 240;
+    int ptr_x, posicaoRaqueteX;
     // Não sei exatamente se pode colocar null, caso não possa é só 
     // adicionar as outras variaveis indicadas.
     accel_read(NULL, NULL, NULL, &ptr_X, NULL, NULL, NULL);
 
-    posicaoRaqueteX += ptr_X 
-    video_box (x1, y1-10, x1 +40, y1-7, SlateBlue3);
+    //melhorar essa questão do y1 para melhorar os valores
+    video_box (posicaoRaqueteX, y1-10, posicaoRaqueteX +40, y1-7, SlateBlue3);
+    posicaoRaqueteX += ptr_X;
 
-    if (posicaoRaqueteX < 313) {
-        posicaoRaqueteX = 273;
-    } else if (x1<7) {
+    /*os valores tem que considerar que ta falando da posição inicial, e
+    ainda vai ser somado os 40px que é para fazer a largura da raquete
+    */
+    /*
+    tela tem largura de 320px e raquete largura de 40px, logo
+    posicaoRaqueteX so pode ir ate 319(tamanho util da tela) - 40 - 5(largura da borda)
+    e valor minimo da raquete tem de ser 1(inicio da tela) + 5 (tam da borda) + 2 (espaçamento)
+    */
+    if (posicaoRaqueteX > 272) {
+        posicaoRaqueteX = 272;
+    } else if (posicaoRaqueteX<8) {
         posicaoRaqueteX = 8;
     }
 }
@@ -177,10 +174,17 @@ void palavra_score(){
 	video_box(86,11,106,15,0xFFFF); //lateral meio do E
 	video_box(86,19,106,23,0xFFFF); //lateral inferior do E
 	video_box(86,3,90,23,0xFFFF); //lateral direita do E
+
+    // dois pontos
+    video_box(108,7,112,11,0xFFFF); //ponto superior
+    video_box(108,15,112,19,0xFFFF); //ponto inferior
 }
 
 /*
 Serve para poder apresentar na tela o texto de pause
+ta iniciando apresentando na tela na posição:
+    x: 200px 
+    y: 3px
 Parametros:
     Boolean - indicar se esta em pause ou nao e apresentar na tela ou nao
 */
@@ -193,6 +197,16 @@ void informacao_pause(int boolean){
 		video_text(200, 3, play);
 	}
 }
+
+/*
+vai apresentar na tela logo apos a palavra score o texto com o valor da pontuação
+Parametro:
+    Pontuação: um char que tem o valor da pontuação
+*/
+void informarScore(char potuacao){
+    video_text(115, 3, potuacao);
+}
+
 
 /*
 pensar em como fazer para fazer essa bola redonda
@@ -225,3 +239,13 @@ void iniciar_hardwares(){
     accel_format(resolucao, range);
     accel_calibrate();
 }
+
+/*
+função para simplificar a limpeza do video que aparece na tela
+ela sozinha ja faz o clear de texto e de caixas e linhas
+*/
+void limparTela(){
+    video_erase ( ); // erase any text on the screen
+	video_clear ( ); // clear current VGA Back buffer
+}
+

@@ -78,14 +78,22 @@ int main() {
         video_show();
         moverRaquete();
     }
-
-
-
-    while (1) {
-        moverRaquete();
+    //caso tenha ganho com o fim dos blocos, ai vai printar que terminou
+    if(!blocosDisponiveis()){
+        printTelaParaabens();
+        fechar_hardwares();
+        return 0;
+    } else{
+        fechar_hardwares();
+        return 0;
     }
 
-	fechar_hardwares();
+
+    // while (1) {
+    //     moverRaquete();
+    // }
+
+	
     return 0;
 }
 

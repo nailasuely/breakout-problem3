@@ -318,7 +318,7 @@ int telaInicial(){
         limparTela();
         
         //construir tela de inicio para apresentar antes de ir ao jogo
-        
+        printTelaInicial();
 
 
 
@@ -405,70 +405,194 @@ void printTelaInicial(){
         video_box(304, 5, 314, 11, 0xF800); //14
         video_box(314, 5, 319, 11, 0xF800); //15
 
-        //SEGUNDA LINHA 14 BLOCOS VERMELHOS
-        video_box(1, 13, 10, 19, 0xF800); //1
-        video_box(20, 13, 30, 19, 0xF800); //2
-        video_box(40, 13, 50, 19, 0xF800); //3
-        video_box(60, 13, 70, 19, 0xF800); //4
-        video_box(80, 13, 90, 19, 0xF800); //5
-        video_box(120, 13, 130, 19, 0xF800); //6
-        video_box(140, 13, 150, 19, 0xF800); //7
-        video_box(160, 13, 170, 19, 0xF800); //8
-        video_box(175, 13, 185, 19, 0xF800); //9
-        video_box(200, 13, 210, 19, 0xF800); //10
-        video_box(220, 13, 230, 19, 0xF800); //11
-        video_box(240, 13, 250, 19, 0xF800); //12
-        video_box(260, 13, 270, 19, 0xF800); //13
-        video_box(290, 13, 300, 19, 0xF800); //14
+        //SEGUNDA LINHA 14 BLOCOS LARANJAS
+        video_box(1, 13, 10, 19, 0xFC00); //1
+        video_box(20, 13, 30, 19, 0xFC00); //2
+        video_box(40, 13, 50, 19, 0xFC00); //3
+        video_box(60, 13, 70, 19, 0xFC00); //4
+        video_box(80, 13, 90, 19, 0xFC00); //5
+        video_box(120, 13, 130, 19, 0xFC00); //6
+        video_box(140, 13, 150, 19, 0xFC00); //7
+        video_box(160, 13, 170, 19, 0xFC00); //8
+        video_box(175, 13, 185, 19, 0xFC00); //9
+        video_box(200, 13, 210, 19, 0xFC00); //10
+        video_box(220, 13, 230, 19, 0xFC00); //11
+        video_box(240, 13, 250, 19, 0xFC00); //12
+        video_box(260, 13, 270, 19, 0xFC00); //13
+        video_box(290, 13, 300, 19, 0xFC00); //14
         
 
-        //TERCEIRA LINHA 15 BLOCOS VERMELHOS
-        video_box(1, 21, 10, 27, 0xF800); //1
-        video_box(12, 21, 22, 27, 0xF800); //2
-        video_box(42, 21, 52, 27, 0xF800); //3
-        video_box(54, 21, 64, 27, 0xF800); //4
-        video_box(84, 21, 94, 27, 0xF800); //5
-        video_box(96, 21, 106, 27, 0xF800); //6
-        video_box(126, 21, 136, 27, 0xF800); //7
-        video_box(138, 21, 148, 27, 0xF800); //8
-        video_box(150, 21, 160, 27, 0xF800); //9
-        video_box(170, 21, 180, 27, 0xF800); //10
-        video_box(182, 21, 192, 27, 0xF800); //11
-        video_box(212, 21, 222, 27, 0xF800); //12
-        video_box(232, 21, 242, 27, 0xF800); //13
-        video_box(252, 21, 262, 27, 0xF800); //14
-        video_box(272, 21, 282, 27, 0xF800); //15
-        video_box(292, 21, 302, 27, 0xF800); //16
+        //TERCEIRA LINHA 15 BLOCOS AMARELOS
+        video_box(1, 21, 10, 27, 0xFFE0); //1
+        video_box(12, 21, 22, 27, 0xFFE0); //2
+        video_box(42, 21, 52, 27, 0xFFE0); //3
+        video_box(54, 21, 64, 27, 0xFFE0); //4
+        video_box(84, 21, 94, 27, 0xFFE0); //5
+        video_box(96, 21, 106, 27, 0xFFE0); //6
+        video_box(126, 21, 136, 27, 0xFFE0); //7
+        video_box(138, 21, 148, 27, 0xFFE0); //8
+        video_box(150, 21, 160, 27, 0xFFE0); //9
+        video_box(170, 21, 180, 27, 0xFFE0); //10
+        video_box(182, 21, 192, 27, 0xFFE0); //11
+        video_box(212, 21, 222, 27, 0xFFE0); //12
+        video_box(232, 21, 242, 27, 0xFFE0); //13
+        video_box(252, 21, 262, 27, 0xFFE0); //14
+        video_box(272, 21, 282, 27, 0xFFE0); //15
+        video_box(292, 21, 302, 27, 0xFFE0); //16
 
         //QUARTA LINHA 14 BLOCOS VERMELHOS
-        video_box(1, 29, 10, 35, 0xF800); //1
-        video_box(20, 29, 30, 35, 0xF800); //2
-        video_box(40, 29, 50, 35, 0xF800); //3
-        video_box(60, 29, 70, 35, 0xF800); //4
-        video_box(80, 29, 90, 35, 0xF800); //5
-        video_box(120, 29, 130, 35, 0xF800); //6
-        video_box(140, 29, 150, 35, 0xF800); //7
-        video_box(160, 29, 170, 35, 0xF800); //8
-        video_box(175, 29, 185, 35, 0xF800); //9
-        video_box(200, 29, 210, 35, 0xF800); //10
-        video_box(220, 29, 230, 35, 0xF800); //11
-        video_box(240, 29, 250, 35, 0xF800); //12
-        video_box(260, 29, 270, 35, 0xF800); //13
-        video_box(290, 29, 300, 35, 0xF800); //14
+        video_box(1, 29, 10, 35, 0x07E0); //1
+        video_box(20, 29, 30, 35, 0x07E0); //2
+        video_box(40, 29, 50, 35, 0x07E0); //3
+        video_box(60, 29, 70, 35, 0x07E0); //4
+        video_box(80, 29, 90, 35, 0x07E0); //5
+        video_box(120, 29, 130, 35, 0x07E0); //6
+        video_box(140, 29, 150, 35, 0x07E0); //7
+        video_box(160, 29, 170, 35, 0x07E0); //8
+        video_box(175, 29, 185, 35, 0x07E0); //9
+        video_box(200, 29, 210, 35, 0x07E0); //10
+        video_box(220, 29, 230, 35, 0x07E0); //11
+        video_box(240, 29, 250, 35, 0x07E0); //12
+        video_box(260, 29, 270, 35, 0x07E0); //13
+        video_box(290, 29, 300, 35, 0x07E0); //14
         
         //QUINTA LINHA 15 BLOCOS VERMELHOS
-        video_box(1, 37, 10, 43, 0xF800); //1
-        video_box(12, 37, 22, 43, 0xF800); //2
-        video_box(44, 37, 54, 43, 0xF800); //3
-        video_box(64, 37, 74, 43, 0xF800); //4
-        video_box(90, 37, 100, 43, 0xF800); //5
-        video_box(102, 37, 112, 43, 0xF800); //6
-        video_box(126, 37, 136, 43, 0xF800); //7
-        video_box(146, 37, 156, 43, 0xF800); //8
-        video_box(166, 37, 176, 43, 0xF800); //9
-        video_box(186, 37, 196, 43, 0xF800); //10
-        video_box(216, 37, 226, 43, 0xF800); //11
-        video_box(256, 37, 266, 43, 0xF800); //12
-        video_box(286, 37, 296, 43, 0xF800); //13
+        video_box(1, 37, 10, 43, 0x07E0); //1
+        video_box(12, 37, 22, 43, 0x07E0); //2
+        video_box(44, 37, 54, 43, 0x07E0); //3
+        video_box(64, 37, 74, 43, 0x07E0); //4
+        video_box(90, 37, 100, 43, 0x07E0); //5
+        video_box(102, 37, 112, 43, 0x07E0); //6
+        video_box(126, 37, 136, 43, 0x07E0); //7
+        video_box(146, 37, 156, 43, 0x07E0); //8
+        video_box(166, 37, 176, 43, 0x07E0); //9
+        video_box(186, 37, 196, 43, 0x07E0); //10
+        video_box(216, 37, 226, 43, 0x07E0); //11
+        video_box(256, 37, 266, 43, 0x07E0); //12
+        video_box(286, 37, 296, 43, 0x07E0); //13
+
+
+}
+
+
+void printTelaParaabens(){
+    //x1, y1, x2, y2
+    //começa x
+    //começa y
+    //termina x
+    //termina y
+
+    //LETRA P
+    video_box(10, 20, 40, 24,0xFFFF); //traço de cima do P
+	video_box(10,20,14,50,0xFFFF); //traço em pé esquerdo do P 
+	video_box(36,20,40,29,0xFFFF); //traço em pé menor direito do P
+	video_box(10,36,40,40,0xFFFF); //traço deitado pequeno do P
+
+    //LETRA A
+    video_box(42, 20, 72, 24,0xFFFF); //traço de cima do P
+	video_box(42,20,46,50,0xFFFF); //traço em pé esquerdo do P 
+	video_box(68,20,72,50,0xFFFF); //traço em pé esquerdo do P
+	video_box(42,40,72,44,0xFFFF); //traço deitado pequeno do P
+
+    //LETRA R
+    video_box(74, 20, 104, 24,0xFFFF); //traço de cima do P
+	video_box(74,20,14,50,0xFFFF); //traço em pé esquerdo do P 
+	video_box(36,20,104,29,0xFFFF); //traço em pé menor direito do P
+	video_box(74,36,104,40,0xFFFF); //traço deitado pequeno do P
+    video_line(74,36,104,50,0xFFFF); //linha lateral descendente do R
+
+    //LETRA A
+    video_box(110, 20, 140, 24,0xFFFF); //traço de cima do P
+	video_box(110,20,46,50,0xFFFF); //traço em pé esquerdo do P 
+	video_box(138,20,140,50,0xFFFF); //traço em pé esquerdo do P
+	video_box(110,40,140,44,0xFFFF); //traço deitado pequeno do P
+
+    //LETRA B
+    video_box(142, 20, 168, 24,0xFFFF); //traço de cima do P
+	video_box(142,20,146,50,0xFFFF); //traço em pé esquerdo do P 
+	video_box(168,24,172,33,0xFFFF); //traço em pé esquerdo do P
+    video_box(168,37,172,46,0xFFFF); //traço em pé esquerdo do P
+	video_box(142,33,168,37,0xFFFF); //traço deitado pequeno do P
+    video_box(142, 46, 168, 50,0xFFFF); //traço de cima do P
+
+
+	//LETRA E
+	video_box(174,20,204,24,0xFFFF); //lateral superior do E
+	video_box(174,33,200,37,0xFFFF); //lateral meio do E
+	video_box(174,46,204,50,0xFFFF); //lateral inferior do E
+	video_box(174,20,178,50,0xFFFF); //lateral direita do E
+
+    //LETRA N
+	video_box(206,20,210,50,0xFFFF); //lateral superior do E
+	video_box(234,20,236,50,0xFFFF); //lateral meio do E
+    video_line(210,20,234,50,0xFFFF); //linha lateral descendente do R
+
+    //LETRA S
+    video_box(236,20,266,24,0xFFFF); //perna alta do S
+	video_box(236,20,240,35,0xFFFF); //perna comprima do S
+	video_box(236,33,266,37,0xFFFF); //perna meio do S
+	video_box(262,37,266,50,0xFFFF); //perna comprima do S
+	video_box(236,46,266,50,0xFFFF); //perna alta do S
+    
+
+    //ULTIMA LINHA
+    video_box(4, 220, 27, 239,0x07E0);
+    video_box(31, 220, 58, 239,0x07E0);
+    video_box(62, 220, 89, 239,0x07E0);
+    video_box(93, 220, 120, 239,0x07E0);
+    video_box(124, 220, 151, 239,0x07E0);
+    video_box(155, 220, 182, 239,0x07E0);
+    video_box(186, 220, 213, 239,0x07E0);
+    video_box(217, 220, 244, 239,0x07E0);
+    video_box(248, 220, 275, 239,0x07E0);
+    video_box(279, 220, 306, 239,0x07E0);
+    
+    //PENULTIMA LINHA
+    video_box(4, 220, 27, 239,0x07E0); //1
+    video_box(31, 220, 58, 239,0x07E0); //2
+    video_box(62, 220, 89, 239,0x07E0); //3
+    video_box(93, 220, 120, 239,0x07E0); //4
+    
+
+    video_box(186, 220, 213, 239,0x07E0); //7
+    video_box(217, 220, 244, 239,0x07E0); //8
+    video_box(248, 220, 275, 239,0x07E0); //9
+    video_box(279, 220, 306, 239,0x07E0); //10
+
+    //ANTEPENULTIMA LINHA
+    video_box(4, 220, 27, 239,0xFFE0); //1
+    video_box(31, 220, 58, 239,0xFFE0); //2
+    video_box(62, 220, 89, 239,0xFFE0); //3
+
+    
+    
+
+    video_box(217, 220, 244, 239,0xFFE0); //8
+    video_box(248, 220, 275, 239,0xFFE0); //9
+    video_box(279, 220, 306, 239,0xFFE0); //10
+
+    //ANTEANTEPENULTIMA LINHA
+    video_box(4, 220, 27, 239,0xFC00); //1
+    video_box(31, 220, 58, 239,0xFC00); //2
+
+
+    
+    
+
+
+    video_box(248, 220, 275, 239,0xFC00); //9
+    video_box(279, 220, 306, 239,0xFC00); //10
+
+
+    //PRIMEIRA LINHA
+    video_box(4, 220, 27, 239,0xF800); //1
+
+
+    
+    
+
+
+
+    video_box(279, 220, 306, 239,0xF800); //10
 
 }

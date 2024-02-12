@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <intelfpgaup/accel.h>
 #include <intelfpgaup/video.h>
+#include <intelfpgaup/KEY.h>
 
 #define NUM_BLOCOS_X 10
 #define NUM_BLOCOS_Y 4
@@ -32,7 +33,20 @@ int velocidadeBolaX, velocidadeBolaY;
 
 
 int main() {
-    iniciar_hardwares();
+    if(!iniciar_hardwares()){
+        printf("Não foi possivel iniciar os dispositivos de hardware");
+        return -1;
+    }
+
+    limparTela();
+
+    //serve para apresentar a tela inicial tipo o menu do jogo
+    //no momento so da para iniciar ou para sair do jogo
+    if(!telaInicial()){
+        //vai para a função de sair do jogo, e la faz a operação que precisa
+        return 0;
+
+    }
 
     limparTela();
     gerar_bordas();
@@ -223,17 +237,21 @@ fechar a porta dos hardwares que foram utilizados
 void fechar_hardwares(){
 	accel_close();
 	video_close();
+    KEY_close();
 }
 
 /*
 realizar abertura e configuração dos hardwares a serem utilizados
 */
-void iniciar_hardwares(){
+int iniciar_hardwares(){
 	int larguraTela, alturaTela, char_x, char_y;
 	int resolucao = 1;
 	int range = 16;
-	accel_open();
-    video_open();
+
+    
+    if(!accel_open() || !video_open() || !KEY_open()){
+        return 0;
+    }
     accel_init();
     video_read (&larguraTela, &alturaTela, &char_x, &char_y); // get screen & text size
     accel_format(resolucao, range);
@@ -249,3 +267,46 @@ void limparTela(){
 	video_clear ( ); // clear current VGA Back buffer
 }
 
+
+
+
+/*
+colocar while com switch case dentro
+ele vai pegar e ter uma variavel que controla a interação do while, e se for p sair troca esse valor dentro do switch
+no switch ele vai verificar qual botão foi apertado, se for o que quer massa, ele pega e sai, se nao for ele pega e continua ali
+são 4 botões que tem e vem no formato da data de 0b1111, sendo para cada botao 1 bit
+*/
+/*
+função para lidar com botões e apresentar a tela inicial para o usuario
+como se fosse um menu, e a depender do botão que ele aperta ele pega e 
+ou sai do programa, ou vai para a tela do jogo
+dentro da logica tem variavel auxiliar para controlar o fluxo do while e dizer
+quando deve sair dele, alem de controle para quando sai da função e ver o retorno
+*/
+int telaInicial(){
+    int aux_while=1;
+    int btn_data, retorno;
+    while(aux_while){
+        KEY_data(&btn_data);
+        limparTela();
+        
+        //construir tela de inicio para apresentar antes de ir ao jogo
+
+
+        switch (btn_data){
+            case 0b1000: //botão de PLAY pressionado, o botão mais a esquerda
+                aux_while = 0; //para poder sair do while e seguir para o jogo
+                retorno = 1;
+                break;
+            case 0b0001: //botao de SAIR pressionado, o botão mais a direita
+                aux_while = 0;
+                retorno =0;
+                break;
+            
+            default:
+                aux_while = 1;
+                break;
+        }
+    }
+    return retorno;
+}

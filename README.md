@@ -44,7 +44,8 @@ gh repo clone nailasuely/breakout-problem3
 - [Equipe](#equipe)
 - [Referências](#referências)
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png">
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png)
+
 
 ## Visão Geral do Projeto
 O atual documento descreve o desenvolvimento de um jogo inspirado no clássico "Breakout", popularizado na década de 1970 e produzido por Nolan Bushnell e Steve Bristow na empresa de videogames Atari. Este jogo foi desenvolvido como parte de um projeto prático, utilizando a placa de desenvolvimento DE1-SoC, que integra uma FPGA e recursos como acelerômetro e interface VGA para visualização em um monitor CRT.
@@ -57,7 +58,7 @@ Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicializ
 
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura.png">
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png">
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png)
 
 ## Tecnologias e Ferramentas Utilizadas
 - Linguagem de Programação: C

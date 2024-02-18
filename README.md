@@ -44,7 +44,7 @@ gh repo clone nailasuely/breakout-problem3
 - [Equipe](#equipe)
 - [Referências](#referências)
 
-![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png)
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 
 ## Visão Geral do Projeto
@@ -58,7 +58,7 @@ Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicializ
 
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura.png">
 
-![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png)
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 ## Tecnologias e Ferramentas Utilizadas
 - Linguagem de Programação: C

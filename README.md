@@ -29,7 +29,7 @@ gh repo clone nailasuely/breakout-problem3
 
 </div>
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Prancheta%201%20(4).png">
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 ## Sumário
 - [Apresentação](#apresentação)

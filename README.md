@@ -127,7 +127,7 @@ Para utilizar o jogo, siga as instruções abaixo:
      ssh aluno@10.0.0.121
      ssh aluno@10.0.0.122
      ```
-   - Insira a senha quando solicitado: `@aluno*123`
+   - Insira a senha quando solicitado: `@luno*123`
    - Navegue até a pasta do projeto utilizando os comandos do Linux.
 
 3. Compile o projeto utilizando o comando `make all`.

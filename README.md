@@ -254,6 +254,8 @@ O processo de detecção de colisão ocorre em cada iteração do loop, onde sã
 Se a bola atinge ou ultrapassa as bordas de um bloco, isso indica que aconteceu uma colisão. Assim, o bloco é marcado como destruído e a direção da bola é invertida de acordo com a borda atingida. Por exemplo, se a bola colide com a borda superior do bloco, sua direção vertical (velocidadePadraoBolaY) é invertida para simular a inversão da bola para baixo. O mesmo ocorre para as outras direções. 
 
 ### Main
+ <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/mainC.svg">
+
 
 O ponto de partida do jogo Breakout é a `main`, onde todas as operações principais são coordenadas e executadas. Nesta função, o jogo é inicializado, os elementos visuais são renderizados na tela e a interação com o jogador é tratada.
 
@@ -298,7 +300,6 @@ Ao sair do loop principal, o jogo executa rotinas finais, dependendo do resultad
 - Se o jogador ganhar, uma tela de parabéns é exibida novamente.
 - Os hardwares são fechados com a função `fechar_hardwares()`, garantindo a correta liberação dos recursos utilizados.
   
-
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 ## Regras do Jogo
 

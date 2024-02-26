@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
- <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/logo.png" alt="Breakout" width="250"></a>
+ <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/logo%20(2).png" alt="Breakout" width="250"></a>
   <br>
   Breakout
   <br>
@@ -15,7 +15,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nailasuely/breakout-problem3/blob/main/LICENSE)
 
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/gif2.gif">
+<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/gif1.gif">
 
 
 > Esse é um projeto da disciplina TEC 499 - Módulo Integrador Sistemas Digitais, no qual ocorre o desenvolvimento de um jogo inspirado no clássico breakout. Utiliza o acelerômetro do DE1-SoC para controlar o jogador e botões para funções de jogo e a visualização é feita através da interface VGA em monitor CRT.
@@ -32,14 +32,13 @@ gh repo clone nailasuely/breakout-problem3
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 ## Sumário
-- [Apresentação](#apresentação)
-- [Documentação utilizada](#documentação-utilizada)
-- [Hardware utilizado](#hardware-utilizado)
-- [Implementação](#implementação)
-  - [C](#gpio)
+- [Visão Geral do Projeto](#Visao-Geral-do-Projeto)
+- [Tecnologias e Ferramentas Utilizadas](#Tecnologias-e-Ferramentas-Utilizadas)
+- [Arquitetura do Kit de Desenvolvimento DE1-SoC](#Arquitetura-do-Kit-de-Desenvolvimento-DE1-SoC)
+- [Descrição do Desenvolvimento em C](#Descrição-do-Desenvolvimento-em-C)
 - [Executando o Projeto](#executando-o-projeto)
 - [Testes](#testes)
-- [Conclusão](#conclusão) 
+- [Considerações Finais](#Considerações-Finais) 
 - [Tutor](#tutor)
 - [Equipe](#equipe)
 - [Referências](#referências)
@@ -56,7 +55,7 @@ Para implementar o jogo, foram utilizadas técnicas de programação em linguage
 
 Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicialização do ambiente de desenvolvimento até a implementação das funcionalidades principais, bem como os desafios enfrentados durante o processo de criação e as soluções escolhidas pela equipe. Além disso, também serão discutidas as possíveis melhorias para futuras versões do projeto.
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura.png">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura%20(2).png">
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
@@ -70,8 +69,10 @@ Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicializ
 - Monitor CRT
 - Visual Studio Code
 
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
-### Arquitetura do Kit de Desenvolvimento DE1-SoC
+## Arquitetura do Kit de Desenvolvimento DE1-SoC
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/kit.jpg">
 
 O [Kit de Desenvolvimento DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive_download.pl?Language=China&No=836&FID=ae336c1d5103cac046279ed1568a8bc3) é uma plataforma de design de hardware construída em torno do FPGA System-on-Chip (SoC) da Altera. Este SoC integra os mais recentes núcleos embarcados Cortex-A9 dual-core, combinados com um sistema de processador baseado em ARM (HPS). Essa combinação oferece uma variedade de recursos, incluindo processador, periféricos e interfaces de memória, todos conectados à matriz FPGA através de uma espinha dorsal de alta largura de banda.
 
@@ -113,6 +114,119 @@ escrever aqui
 
 escrever aqui 
 
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
+## Descrição do Desenvolvimento em C
+
+### Mover raquete
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/moveRaquete.svg">
+
+A função `moverRaquete()` é responsável por controlar o movimento da raquete no jogo, permitindo que o jogador interaja com o Kit DE1-SoC, como demonstrado no gif a seguir:
+
+<div align="center">
+  
+<img width="500px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/gif_Exemplo.gif">
+
+</div>
+
+O processo de movimentação da raquete inicia-se com a leitura dos dados do acelerômetro. Uma vez lidos os dados do acelerômetro, o programa utiliza as informações para determinar a direção do movimento da raquete. No caso da função `moverRaquete()`, o movimento horizontal da raquete é controlado pelo valor da variável `ptr_x`, que representa a inclinação do Kit para a esquerda ou direita.
+
+Com base nesse valor, a função ajusta a posição horizontal da raquete (`posicaoRaqueteX`) de acordo com a inclinação detectada. O movimento é realizado somando o valor lido do acelerômetro dividido por 10 à posição atual da raquete.
+
+É importante mencionar que o valor de `y1`, utilizado na função `video_box()` para desenhar a raquete na tela, pode ser ajustado para melhorar os valores visuais do jogo, como a posição vertical inicial da raquete.
+
+Além disso, há uma verificação para garantir que a raquete permaneça dentro dos limites da tela do jogo. A raquete tem uma largura de 40 pixels. Assim, a posição horizontal da raquete é limitada para não ultrapassar os limites da tela:
+
+- Se `posicaoRaqueteX` for maior que 272, ela é ajustada para 272 para evitar que a raquete ultrapasse o limite direito da tela.
+- Se `posicaoRaqueteX` for menor que 8, ela é ajustada para 8 para evitar que a raquete ultrapasse o limite esquerdo da tela.
+
+Essas verificações são feitas para que a raquete permaneça visível na tela do jogo e que o jogador possa controlá-la dentro dos limites.
+
+ ### Detectar colisão raquete
+ 
+ <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoRaquete.svg">
+ 
+A função “detectarColisaoRaquete()" desempenha o papel de determinar se houve uma colisão entre a bola do jogo e a raquete. Quando o jogador inclina o Kit para a esquerda ou direita, o acelerômetro detecta esses movimentos e os converte em sinais elétricos que são interpretados pelo sistema digital. Esses sinais são então utilizados para deslocar a raquete horizontalmente na tela do jogo.
+
+Na iniciação, ocorre a definição das variáveis para representar os limites da raquete e da bola. As coordenadas da raquete são determinadas pela sua posição atual, enquanto as coordenadas da bola são calculadas com base em sua posição inicial. Em seguida, ocorre a verificação da possível colisão entre a bola e a raquete. Esta verificação é feita comparando as coordenadas da bola com as coordenadas da raquete. Se a bola atinge os limites horizontais e verticais da raquete, isso indica uma colisão entre os dois elementos.
+
+Para ilustrar o funcionamento detalhado da função “detectarColisaoRaquete()”, o fluxograma ilustra as etapas pelas quais o programa passa durante a execução da função, desde a verificação das coordenadas até a atualização da velocidade da bola.
+
+### Inicializar Blocos
+
+Essa função é utilizada para dispor os blocos na tela de maneira adequada. Durante a inicialização, a função percorre uma matriz de blocos com dimensões definidas pela quantidade de blocos na vertical e na horizontal. Cada bloco é caracterizado por sua posição X e Y, largura e altura, e cor.  O posicionamento dos blocos é calculado de acordo com a largura e altura de cada bloco, o espaçamento entre eles e as margens da tela para garantir a uniformidade deles na tela. 
+
+Cada bloco recebe uma cor única. A variação de cores é realizada com base na posição do bloco na matriz, para proporcionar um efeito visual de degradê. As cores são definidas gradativamente através da variação entre três cores base (cor1, cor2, cor3), que são mescladas de acordo com a posição do bloco em relação ao total de blocos em uma linha.
+
+
+### Renderizar blocos
+ <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/renderBlocos.svg">
+Ao iniciar o processo de renderização  dos blocos, a função percorre cada posição na matriz de blocos do jogo. O percurso é feito seguindo um padrão de linha por linha, começando do canto superior esquerdo do cenário e indo de cima para baixo e da esquerda para a direita.
+
+Para cada bloco que a função encontra, ela verifica se ele ainda não está destruído. Se o bloco estiver inteiro, a função prossegue para desenhar ele na tela. Antes de desenhar cada bloco, a função verifica se as coordenadas do bloco estão dentro dos limites da tela do jogo para assegurar que os blocos sejam desenhados apenas nas áreas visíveis ao jogador, evitando que partes dos blocos fiquem fora da visualização.
+
+Ao desenhar um bloco na tela, a função utiliza as informações sobre as cores e posições do bloco em questão. Isso significa que cada bloco colorido será apresentado no local apropriado na tela. 
+
+Durante a jogo, conforme a bola colide com os blocos e eles são destruídos, a função renderizarBlocos() é novamente chamada para atualizar a tela e remover os blocos destruídos. É um processo dinâmico para manter o cenário do jogo sendo atualizado, lembrando da taxa de atualização da tela. 
+
+
+
+
+### Detectar colisão com os blocos
+ <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
+
+A função detectarColisao() é responsável por verificar se ocorreu uma colisão entre a bola do jogo e os blocos que compõem o cenário para determinar como a bola deve reagir ao tocar em um bloco.
+
+O processo de detecção de colisão ocorre em cada iteração do loop, onde são verificados todos os blocos presentes no cenário do jogo. Para cada bloco não destruído, são calculadas as coordenadas de suas bordas esquerda, direita, superior e inferior. Em seguida, é verificado se as coordenadas da próxima posição da bola estão dentro dos limites do bloco.
+
+Se a bola atinge ou ultrapassa as bordas de um bloco, isso indica que aconteceu uma colisão. Assim, o bloco é marcado como destruído e a direção da bola é invertida de acordo com a borda atingida. Por exemplo, se a bola colide com a borda superior do bloco, sua direção vertical (velocidadePadraoBolaY) é invertida para simular a inversão da bola para baixo. O mesmo ocorre para as outras direções. 
+
+### Main
+
+O ponto de partida do jogo Breakout é a `main`, onde todas as operações principais são coordenadas e executadas. Nesta função, o jogo é inicializado, os elementos visuais são renderizados na tela e a interação com o jogador é tratada.
+
+Antes de qualquer coisa, é muito importante garantir que todos os dispositivos de hardware estão devidamente configurados. Para isso, é chamada a função `iniciar_hardwares()` que é responsável por verificar se os dispositivos de aceleração 3D (3D-acelerômetro accel), vídeo VGA (vídeo), e teclado (KEY) foram abertos corretamente.
+
+Se algum dos dispositivos não puder ser iniciado corretamente, uma mensagem de erro é exibida informando que não foi possível iniciar os dispositivos de hardware, e o programa é encerrado.
+
+Após a confirmação da verificação bem sucedida, o jogo avança para a tela inicial, onde o jogador pode decidir iniciar o jogo, pausar, ou sair. Caso o jogador escolha iniciar, a tela é limpa e os blocos do jogo são inicializados utilizando a função `inicializarBlocos()`. Assim, o jogo entra em um loop principal que continua enquanto houver blocos ativos no ou o jogador não pressiona o botão específico para sair.
+
+Durante cada iteração deste loop, são realizadas as seguintes operações:
+
+1. **Leitura das Teclas**
+   
+A função `KEY_read(&btn_data)` é responsável por ler o estado das teclas pressionadas.
+
+3. **Atualização da Tela**
+   
+As funções de renderização da tela são chamadas para desenhar os elementos visuais:
+- As bordas do cenário são geradas com a função `gerar_bordas()`.
+- A pontuação do jogador é calculada e exibida na tela com a função `palavra_score()`.
+- O movimento da raquete é controlado pela função `moverRaquete()`.
+- É verificada a ocorrência de colisão entre a bola e os blocos com `detectarColisao()`.
+- A colisão entre a bola e a raquete é verificada com `detectarColisaoRaquete()`.
+- O movimento da bola é atualizado com a função `moverBola(0)`.
+- Os blocos são renderizados na tela com `renderizarBlocos()`.
+
+3. **Tratamento de Pausa**
+   
+- Se o jogador pressionar o botão específico para pausar (0b0100), o jogo é pausado até que o jogador decida continuar com `sairPause()` que basicamente espera até que o jogador clique no botão de continuar.
+
+4. **Atualização Visual**
+- A tela é atualizada para mostrar as alterações feitas durante a iteração do loop com `video_show()`.
+
+5. **Vitória e Derrota**
+   
+- Se todos os blocos forem destruídos (`blocosAtivos()` retorna falso), uma tela de parabéns é exibida.
+- Se a bola ultrapassar a posição vertical de `230` pixels, o jogador perde e uma tela de derrota é exibida.
+
+6. **Encerramento do Jogo**
+   
+Ao sair do loop principal, o jogo executa rotinas finais, dependendo do resultado da partida:
+- Se o jogador ganhar, uma tela de parabéns é exibida novamente.
+- Os hardwares são fechados com a função `fechar_hardwares()`, garantindo a correta liberação dos recursos utilizados.
+
+
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 ## Como executar
 
@@ -138,7 +252,20 @@ Para utilizar o jogo, siga as instruções abaixo:
 
 6. Durante o jogo, pressione o botão para iniciar o jogo ou pausar/sair.
 
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
+## Considerações Finais
+
+Por fim, o projeto do jogo Breakout foi concluído com sucesso, alcançando os objetivos estabelecidos para proporcionar uma experiência interativa aos jogadores. Especialmente em relação à interação eficaz com os elementos de hardware do Kit DE1-SoC.
+
+A interação com os dispositivos de hardware, em especial o 3D-acelerômetro e o vídeo VGA, ocorreu de maneira eficiente, garantindo movimentos suaves e uma experiência de jogo responsiva. O monitor CRT com resolução de 640x480 e taxa de atualização de 60Hz contribuiu para a exibição nítida, proporcionando a experiência visual do jogo. 
+
+Contudo, também são necessárias melhorias futuras no projeto. Uma possível implementação seria a adição de uma funcionalidade de salvamento de progresso na memória, permitindo aos jogadores retomarem o jogo de onde pararam em sessões posteriores. Isso proporciona uma experiência mais conveniente, sem a necessidade de reiniciar o jogo a cada nova partida sem perder o progresso alcançado.
+
+Em resumo, o projeto do jogo Breakout não apenas demonstrou a capacidade de integrar software e hardware de forma eficaz, mas também ofereceu uma experiência de jogo imersiva e interativa aos usuários. A interação com o acelerômetro, o monitor CRT e a renderização gráfica foram elementos fundamentais para o sucesso do projeto, que pode servir como um exemplo prático de aplicação de conceitos de sistemas digitais em um contexto de entretenimento.
+
+
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png) 
 
 ## Equipe
 
@@ -150,6 +277,7 @@ Para utilizar o jogo, siga as instruções abaixo:
 <a href="https://github.com/joaogabrielaraujo"><img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/joaoGabriel.png" title="joao" width="100" ></a>
 
 [//]: contributor-faces
+
 
 ## Tutor
 

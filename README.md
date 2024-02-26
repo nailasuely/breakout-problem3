@@ -292,6 +292,22 @@ As funções de renderização da tela são chamadas para desenhar os elementos 
 Ao sair do loop principal, o jogo executa rotinas finais, dependendo do resultado da partida:
 - Se o jogador ganhar, uma tela de parabéns é exibida novamente.
 - Os hardwares são fechados com a função `fechar_hardwares()`, garantindo a correta liberação dos recursos utilizados.
+  
+
+![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
+## Regras do Jogo
+
+Objetivo: O objetivo do jogo é destruir todos os tijolos na parte superior da tela usando uma bola e uma raquete.
+
+Controles: O jogador controla uma raquete na parte inferior da tela, movendo-a para a esquerda e para a direita para rebater a bola.
+
+Bola e Raquete: No início do jogo, uma bola é lançada em direção aos tijolos a partir da parte superior da tela. O jogador utiliza a raquete para rebater a bola e enviá-la de volta em direção aos tijolos.
+
+Tijolos: As paredes são compostas por vários tijolos coloridos. Cada tijolo é destruído quando atingido pela bola.
+
+Pontuação: O jogador ganha 10 pontos para cada tijolo destruído.
+
+Fim do Jogo: O jogo termina se a bola tocar a parte inferior da tela, passando pela raquete.
 
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
@@ -319,6 +335,9 @@ Para utilizar o jogo, siga as instruções abaixo:
 5. Utilize o acelerômetro embutido na placa DE1-SoC para mover a barra para a esquerda e para a direita.
 
 6. Durante o jogo, pressione o botão para iniciar o jogo ou pausar/sair.
+
+
+
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 

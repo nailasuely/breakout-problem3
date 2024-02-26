@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/naila/Documents/GitHub/breakout-problem3/src",
-      "program": "c:/Users/naila/Documents/GitHub/breakout-problem3/src/build/Debug/outDebug",
+      "cwd": "c:/Users/naila/Downloads",
+      "program": "c:/Users/naila/Downloads/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

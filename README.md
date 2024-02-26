@@ -100,19 +100,87 @@ O DE1-SoC é equipado com memória DDR3 de alta velocidade, capacidades de víde
 
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/diagram1.png">
 
+
 </div>
+<div>
 
-### Módulo de vídeo 
+### Visão Geral sobre comunicação de vídeo
 
-escrever aqui
+  
+O controlador do buffer de pixels desempenha um papel crucial na exibição de dados de pixels na tela VGA, oferecendo uma interface entre o sistema e a exibição gráfica. Ele compreende um conjunto de registradores, incluindo os vitais Buffer e Backbuffer que são representados na figura abaixo, que armazenam os endereços iniciais dos buffers de pixels. Inicialmente, o registrador Buffer é configurado para o endereço padrão 0xC8000000, representando a memória on-chip do FPGA, o que também é refletido no Backbuffer, indicando um único buffer de pixels.
 
-### Módulo do Acelerômetro 
 
-escrever aqui
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/pixelbuffer.jpg">
 
-### Módulo para botões 
 
-escrever aqui 
+A intervenção do software permite a criação de um segundo buffer de pixels ao modificar o endereço do registrador Backbuffer. Essa adição proporciona uma área adicional para operações de desenho, permitindo a manipulação de imagens por meio da escrita nos endereços de pixels.
+
+Uma funcionalidade crítica do controlador é a troca de buffer de pixels, iniciada escrevendo-se o valor 1 no registrador Buffer. Isso desencadeia uma troca entre os conteúdos dos registradores Buffer e Backbuffer. No entanto, a troca é diferida até a conclusão de um ciclo de desenho da tela VGA, alinhando-se com o tempo de sincronização vertical que ocorre a cada 1/60 segundos.
+
+Para monitorar o término da troca, o software pode verificar o valor do bit S no registrador de Status (endereço 0xFF20302C). Quando o registrador Buffer é definido como 1, o bit S é elevado, indicando uma troca pendente. Após a conclusão da troca, o bit S é redefinido para 0.
+
+Além disso, o registrador de Status oferece informações adicionais, como os bits m e n, que especificam o número de bits de endereço y e x da VGA, respectivamente. Os bits BS indicam o tamanho do pixel, com um valor de 15 para um tamanho de pixel de dois bytes.
+
+A interface de programação inclui um registrador de resolução, que armazena as resoluções X e Y dos buffers de pixels. No contexto específico, a resolução padrão é de 320 x 240 pixels, sendo uma característica importante para o desenvolvimento de gráficos e aplicativos de exibição de imagens.
+
+É importante observar que a resolução do monitor VGA é dobrada, o que significa que cada pixel é replicado tanto horizontal quanto verticalmente para atender à resolução do monitor.
+
+### Funções de vídeo utilizadas
+
+A biblioteca video_h, fornecida pela FPGACADEMY.ORG, desempenha um papel crucial na renderização dos elementos visuais do jogo no monitor CRT. A inclusão do cabeçalho #include <intelfpgaup/video.h> no código-fonte do jogo, permite o acesso a uma série de funções que simplificam a manipulação de gráficos. No código fonte do projeto foram atualizadas:
+ 
+1. `video_open()`: serve para abrir o dispositivo de vídeo VGA e  configura os parâmetros necessários para a comunicação com o monitor.
+
+2. `video_clear()`: permite limpar a tela de todos os elementos visuais existentes. Isso é útil para garantir que cada quadro do jogo comece com uma tela limpa, pronta para a renderização dos elementos do próximo cenário do jogo.
+
+3. `video_pixel(x, y, color)`: permite desenhar pixels individuais na tela. Isso é útil para criar detalhes precisos ou manipular elementos gráficos. 
+
+4. `video_box(x1, y1, x2, y2, color)`: podemos desenhe caixas preenchidas na tela. Essa função é frequentemente utilizada para representar elementos como paredes, objetos sólidos ou áreas delimitadas.
+
+5. `video_text(x, y, string)`: nos permite adicionar texto à tela em uma posição específica. Isso é fundamental para exibir informações importantes, como pontuações, instruções ou mensagens de status.
+
+6. `video_close()`: para encerrar a comunicação com o dispositivo de vídeo VGA e libera os recursos utilizados. 
+
+
+
+### Acelerômetro ADXL345
+
+O Acelerômetro Digital ADXL345 fornece uma visão abrangente deste sistema de medição de aceleração de 3 eixos. Sua estrutura de micromaquinagem de superfície de polissilício permite faixas de medição selecionáveis de ±2 g, ±4 g, ±8 g ou ±16 g. Essa capacidade de detectar tanto aceleração dinâmica quanto estática o torna útil como sensor de inclinação.
+
+A construção do sensor apresenta molas de polissilício que suspendem a estrutura sobre uma pastilha de silício, resistindo às forças resultantes da aceleração aplicada. A deflexão da estrutura é medida por meio de capacitores diferenciais, cujo desbalanceamento devido à aceleração resulta em uma saída proporcional. A demodulação sensível à fase é usada para determinar a magnitude e a polaridade da aceleração.
+
+O ADXL345 oferece baixo consumo de energia, resolução selecionável, e funções especiais como detecção de toque único/duplo, monitoramento de atividade/inatividade e detecção de queda livre. Além disso, possui uma ampla faixa de tensão de alimentação e interfaces digitais flexíveis.
+
+O arquivo PDF do ADXL345 fornece um diagrama de blocos funcional detalhado, delineando os componentes do sensor, eletrônicos de sensor, filtro digital, gerenciamento de energia, controle, lógica de interrupção e componentes de E/S serial.
+
+### Funções para controle do Acelerômentro
+
+1. `accel_open()`: Inicia o dispositivo do acelerômetro 3D e realiza configurações iniciais necessárias para a comunicação e operação adequada do sensor.
+
+2. `accel_read(ready, tap, dtap, x, y, z, mg_per_lsb)`: Realiza a leitura dos dados do acelerômetro 3D. Os parâmetros de saída incluem:
+   - `ready`: sinaliza se novos dados estão prontos (1 se houver novos dados, caso contrário, 0).
+   - `tap`: sinaliza se ocorreu um evento de toque (1 se houver um toque, caso contrário, 0).
+   - `dtap`: sinaliza se ocorreu um evento de duplo toque (1 se houver um duplo toque, caso contrário, 0).
+   - `x`: aceleração nos eixos x.
+   - `y`: aceleração nos eixos y.
+   - `z`: aceleração nos eixos z.
+   - `mg_per_lsb`: fator de escala dos dados de aceleração.
+   
+3. `accel_init()`: Inicializa o dispositivo do acelerômetro 3D, preparando-o para a leitura de dados.
+
+4. `accel_calibrate()`: Realiza a calibragem do dispositivo do acelerômetro 3D, garantindo a precisão dos dados de aceleração fornecidos.
+
+5. `accel_device()`: Solicita a impressão do identificador do dispositivo do acelerômetro, útil para diagnósticos e identificação do sensor.
+
+6. `accel_format(full, range)`: Define o formato dos dados de aceleração, incluindo o alcance completo e a faixa de valores suportados.
+
+7. `accel_rate(rate)`: Define a taxa de dados de aceleração, especificando a frequência em Hz na qual os dados são fornecidos.
+
+8. `accel_close()`: Encerra a comunicação com o dispositivo do acelerômetro 3D e libera os recursos associados.
+
+
+
+</div>
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 ## Descrição do Desenvolvimento em C

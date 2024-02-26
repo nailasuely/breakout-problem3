@@ -302,18 +302,13 @@ Ao sair do loop principal, o jogo executa rotinas finais, dependendo do resultad
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 ## Regras do Jogo
 
-Objetivo: O objetivo do jogo é destruir todos os tijolos na parte superior da tela usando uma bola e uma raquete.
+Objetivo: Destruir todos os blocos sem deixar a bola cair no chão.
 
-Controles: O jogador controla uma raquete na parte inferior da tela, movendo-a para a esquerda e para a direita para rebater a bola.
+Controles: O jogador controla a raquete movimentando a placa, fazendo assim a raquete ir para a direita ou para a esquerda.
 
-Bola e Raquete: No início do jogo, uma bola é lançada em direção aos tijolos a partir da parte superior da tela. O jogador utiliza a raquete para rebater a bola e enviá-la de volta em direção aos tijolos.
+Raquete: O local onde a bola acerta a raquete que determina o ângulo que a bola volta, na metade esquerda volta no ângulo espelhado e na metade direita volta no mesmo ângulo.
 
-Tijolos: As paredes são compostas por vários tijolos coloridos. Cada tijolo é destruído quando atingido pela bola.
-
-Pontuação: O jogador ganha 10 pontos para cada tijolo destruído.
-
-Fim do Jogo: O jogo termina se a bola tocar a parte inferior da tela, passando pela raquete.
-
+Jogabilidade: O jogo começa com a bola sendo lançada em direção aos blocos e cada bloco vale 10 pontos, ganha o jogo quem conseguir destruir todos os blocos.
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 

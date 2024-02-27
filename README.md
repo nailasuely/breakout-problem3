@@ -156,7 +156,7 @@ A construção do sensor apresenta molas de polissilício que suspendem a estrut
 
 O ADXL345 oferece baixo consumo de energia, resolução selecionável, e funções especiais como detecção de toque único/duplo, monitoramento de atividade/inatividade e detecção de queda livre. Além disso, possui uma ampla faixa de tensão de alimentação e interfaces digitais flexíveis.
 
-O arquivo PDF do ADXL345 fornece um diagrama de blocos funcional detalhado, delineando os componentes do sensor, eletrônicos de sensor, filtro digital, gerenciamento de energia, controle, lógica de interrupção e componentes de E/S serial.
+[O arquivo PDF do ADXL345](https://github.com/nailasuely/breakout-problem3/blob/main/assets/files/ADXL345.pdf) fornece um diagrama de blocos funcional detalhado, delineando os componentes do sensor, eletrônicos de sensor, filtro digital, gerenciamento de energia, controle, lógica de interrupção e componentes de E/S serial.
 
 ### Funções para controle do Acelerômentro
 

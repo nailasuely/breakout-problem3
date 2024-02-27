@@ -331,13 +331,15 @@ Para utilizar o jogo, siga as instruções abaixo:
 
 3. Compile o projeto utilizando o comando `make all`.
 
-4. Inicie o jogo pressionando o botão correspondente na placa DE1-SoC.
+4. Inicie o jogo pressionando o primeiro botão, “key-3”, na placa DE1-SoC.
 
 5. Utilize o acelerômetro embutido na placa DE1-SoC para mover a barra para a esquerda e para a direita.
 
-6. Durante o jogo, pressione o botão para iniciar o jogo ou pausar/sair.
+6. Pressione o botão 3, “key-1” para sair durante o jogo.
 
+7. Para retornar a dar jogar novamente, após ganhar ou perder, tem de pressionar o primeiro botão, “key-3”
 
+8. Para retornar a dar jogar novamente, após ganhar ou perder, tem de pressionar o primeiro botão, “key-3”
 
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
@@ -347,29 +349,39 @@ Nesse projeto foi utilizado uma estratégia modular, ou seja os testes foram rea
 
 O primeiro módulo separado tinha como objetivo aprender o funcionamento do acelerômetro embutido na FPGA. O código em si depende das APIs fornecidas pela Intel FPGA para acessar e controlar o acelerômetro. No caso do código, são utilizadas funções como accel_open(), accel_init(), accel_format(), accel_calibrate(), accel_read(), e accel_close(). É escrito na tela o valor de x enquanto é feita a movimentação da placa, para verificar sua oscilação, e quais os valores eram retornados para então saber como usá-los no programa completo.
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/captura_do_teste_do_acelerometro.png">
 
 Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalidades que a porta VGA proporciona. Logo foi criado um módulo para verificar as funções pré-existentes da biblioteca “video”, usando como auxiliar um código exemplo disponibilizado no site da FPGA Academy. A partir deste foi possível compreender melhor o funcionamento para criar um módulo próprio, em que foram testadas as funções de uso do video e compreendido melhor o seu funcionamento.
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.jpg">
+
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.jpg">
+
 
 Com o entendimento sobre o funcionamento de como reproduzir video, além de como colher os valores do acelerômetro, foi o momento de mesclar ambos os hardwares em um único código, este que após aperfeiçoamento tornou-se a função de movimentar a raquete presente no código final.
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Movimenta%C3%A7%C3%A3o_raquete.gif">
 
 A fim de obter um jogo com melhor jogabilidade e funcionamento, o uso dos botões presentes na placa DE1-SoC, foram de grande utilidade. Esse hardware foi último a ser testado, e seguindo a lógica dos testes anteriores, foi criado um módulo para teste unitário do mesmo, e após integração deste no arquivo de trabalho principal.
 
+Diante do funcionamento dos hardwares no sistema entendidos, a implementação do jogo pode prosseguir com o desenvolvimento da lógica de funcionamento, além da construção das telas que são visualizadas durante o jogo. Sendo assim, para visualizar a imagem desenhada na tela de forma prática, manipulações no código fizeram-se necessárias. Estas aconteciam com o retirar de condicionais para funcionamento do jogo, para fazer com que chegar até a tela desejada torna-se algo mais rápido e simples. Essas manipulações foram de grande utilidade para testar a tela de parabéns, visto que não necessitava quebrar todos os blocos para visualizar, e ao realizar o teste se o fluxo do jogo levaria até ela, usou-se da estratégia de diminuir a quantidade de blocos, afim de facilitar a chegada até ela e verificação de quebra de todos os blocos. Outro teste relacionado ao vídeo foi a exibição do valor da pontuação se estava na posição correta, ja que o texto aparece na tela durante o jogo, assim como na tela de “game over” em outra posição.
 
-Diante do funcionamento dos hardwares no sistema entendidos, a implementação do jogo pode prosseguir com o desenvolvimento da lógica de funcionamento, além da construção das telas que são visualizadas durante o jogo. Sendo assim, para visualizar a imagem desenhada na tela de forma prática, manipulações no código fizeram-se necessárias. Estas aconteciam com o retirar de condicionais para funcionamento do jogo, para fazer com que chegar até a tela desejada torna-se algo mais rápido e simples. Essas manipulações foram de grande utilidade para testar a tela de parabéns, visto que não necessitava quebrar todos os blocos para visualizar, e ao realizar o teste se o fluxo do jogo levaria até ela, usou-se da estratégia de diminuir a quantidade de blocos, afim de facilitar a chegada até ela e verificaçãode quebra de todos os blocos. Outro teste relacionado ao vídeo foi a exibição do valor da pontuação se estava na posição correta, ja que o texto aparece na tela durante o jogo, assim como na tela de “game over” em outra posição.
+<img width="" src="hhttps://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
-<a href="https://youtu.be/yls5UNrVokE">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.jpg">
 
+<a href="https://youtu.be/g64wYvrjTxM">
+https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/tela_de_parabens.mp4
 </a>
+
+<a href="https://youtu.be/yls5UNrVokE">
+https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/perdendo_o_jogo.mp4
+</a>
+
 
 Outro teste de lógica do jogo ocorreu ao testar o botão pause, em que envolvia manipular o vídeo, e os botões. Nesse momento implementado já no código principal para o “pause” ser visível, além de ver o nome “pause” na tela e ajustado na posição correta. Como pode ser visto na imagem.
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/colisaoBloco.svg">
+<img width="" src="hhttps://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
 
 
 Com as imagens já melhor  desenvolvidas, o funcionamento do jogo tomou um tempo nos testes, dada a necessidade de correcao de erros que surgiam a cada implementação, visando um melhor funcionamento. Inicialmente com o teste de colisão da bola com as bordas da janela, e partindo para a colisao com a raquete, em que problemas como a bola não efetuar o ricocheteamento correto, foram pertinentes até conseguir solucionar. Outro problema de colisão ocorreu com os blocos para serem destruídos, em que o sentido reverso da bola não era ocorria conforme previsto. Os erros nesse momento ao testar a colisão, necessitavam de testes sucessivos, e por vezes longos, para tentar reproduzir a situacao em que ocoreu algum erro e verificar se a correção foi efetivada.

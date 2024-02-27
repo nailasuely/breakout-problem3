@@ -109,7 +109,7 @@ O DE1-SoC é equipado com memória DDR3 de alta velocidade, capacidades de víde
 </div>
 <div>
 
-## Visão Geral sobre comunicação de vídeo
+### Visão Geral sobre comunicação de vídeo
 
   
 O controlador do buffer de pixels desempenha um papel crucial na exibição de dados de pixels na tela VGA, oferecendo uma interface entre o sistema e a exibição gráfica. Ele compreende um conjunto de registradores, incluindo os vitais Buffer e Backbuffer que são representados na figura abaixo, que armazenam os endereços iniciais dos buffers de pixels. Inicialmente, o registrador Buffer é configurado para o endereço padrão 0xC8000000, representando a memória on-chip do FPGA, o que também é refletido no Backbuffer, indicando um único buffer de pixels.
@@ -130,7 +130,7 @@ A interface de programação inclui um registrador de resolução, que armazena 
 
 É importante observar que a resolução do monitor VGA é dobrada, o que significa que cada pixel é replicado tanto horizontal quanto verticalmente para atender à resolução do monitor.
 
-## Funções de vídeo utilizadas
+### Funções de vídeo utilizadas
 
 A biblioteca video_h, fornecida pela FPGACADEMY.ORG, desempenha um papel crucial na renderização dos elementos visuais do jogo no monitor CRT. A inclusão do cabeçalho #include <intelfpgaup/video.h> no código-fonte do jogo, permite o acesso a uma série de funções que simplificam a manipulação de gráficos. No código fonte do projeto foram atualizadas:
  
@@ -148,7 +148,7 @@ A biblioteca video_h, fornecida pela FPGACADEMY.ORG, desempenha um papel crucial
 
 
 
-## Acelerômetro ADXL345
+### Acelerômetro ADXL345
 
 O Acelerômetro Digital ADXL345 fornece uma visão abrangente deste sistema de medição de aceleração de 3 eixos. Sua estrutura de micromaquinagem de superfície de polissilício permite faixas de medição selecionáveis de ±2 g, ±4 g, ±8 g ou ±16 g. Essa capacidade de detectar tanto aceleração dinâmica quanto estática o torna útil como sensor de inclinação.
 
@@ -158,7 +158,7 @@ O ADXL345 oferece baixo consumo de energia, resolução selecionável, e funçõ
 
 O arquivo PDF do ADXL345 fornece um diagrama de blocos funcional detalhado, delineando os componentes do sensor, eletrônicos de sensor, filtro digital, gerenciamento de energia, controle, lógica de interrupção e componentes de E/S serial.
 
-## Funções para controle do Acelerômentro
+### Funções para controle do Acelerômentro
 
 1. `accel_open()`: Inicia o dispositivo do acelerômetro 3D e realiza configurações iniciais necessárias para a comunicação e operação adequada do sensor.
 

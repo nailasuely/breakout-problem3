@@ -337,9 +337,9 @@ Para utilizar o jogo, siga as instruções abaixo:
 
 6. Pressione o botão 3, “key-1” para sair durante o jogo.
 
-7. Para retornar a dar jogar novamente, após ganhar ou perder, tem de pressionar o primeiro botão, “key-3”
+7. Para retornar a jogar novamente, após ganhar ou perder, tem de pressionar o primeiro botão, “key-3”
 
-8. Para retornar a dar jogar novamente, após ganhar ou perder, tem de pressionar o primeiro botão, “key-3”
+8. Para pausar ou sair do pause do jogo, tem de pressionar o segundo botão, da esquerda para a direita, “key-2”
 
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
@@ -355,7 +355,7 @@ Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalid
 
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.jpg">
 
-<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.jpg">
+<img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/imagem_no_monitor.jpg">
 
 
 Com o entendimento sobre o funcionamento de como reproduzir video, além de como colher os valores do acelerômetro, foi o momento de mesclar ambos os hardwares em um único código, este que após aperfeiçoamento tornou-se a função de movimentar a raquete presente no código final.
@@ -371,11 +371,11 @@ Diante do funcionamento dos hardwares no sistema entendidos, a implementação d
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.jpg">
 
 <a href="https://youtu.be/g64wYvrjTxM">
-https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/tela_de_parabens.mp4
+  <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/tela_de_parabens_1.gif">
 </a>
-
+<br>
 <a href="https://youtu.be/yls5UNrVokE">
-https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/perdendo_o_jogo.mp4
+  <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/perdendo_o_jogo_1.gif">
 </a>
 
 

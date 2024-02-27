@@ -5,10 +5,10 @@
 #include <string.h>
 #include <math.h>
 
-/**
-* =================================
-* Parte dos defines
-* =================================
+/*
+=================================
+Parte dos defines
+=================================
 */
 
 #define LARGURA_BLOCO 32
@@ -68,13 +68,13 @@ void renderizarBlocos();
  * Estrutura de dado para salvar as informações a respeito dos blocos
  * desenhandos na tela, que serão destruidos ao decorrer do jogo.
  * A estrutura contem:
- * - X: valor para indicar o inicio de sua localização no eixo X
- * - Y: valor para indicar o inicio de sua localização no eixo Y
- * - largura: valor para indicar a largura que o bloco deve ter
- * - altura: valor para indicar a altura que o bloco deve ter
- * - destruido: inteiro que guarda a informação se o bloco ja foi destruido
+ * @param X: valor para indicar o inicio de sua localização no eixo X
+ * @param Y: valor para indicar o inicio de sua localização no eixo Y
+ * @param largura: valor para indicar a largura que o bloco deve ter
+ * @param altura: valor para indicar a altura que o bloco deve ter
+ * @param destruido: inteiro que guarda a informação se o bloco ja foi destruido
  * ou não, sendo 0 para nao destruido e 1 para destruido
- * - cor: valor para indicar qual a cor que esse bloco dever ter ao ser renderizado
+ * @param cor: valor para indicar qual a cor que esse bloco dever ter ao ser renderizado
  * 
  * --------------------------------------------------------------
  */
@@ -425,8 +425,7 @@ void detectarColisaoRaquete()
  * realiza a movimentação da bola, alterando a sua posição, e por fim
  * realiza a chamada da função, passando o valor de X e de Y, para
  * desenhar a bola na tela.
- * - Parametros:
- * - - Colisão: valor do tipo inteiro para informar a ocorrencia
+ * @param Colisão: valor do tipo inteiro para informar a ocorrencia
  * de uma colisão ou não, os valores aceitos são 0 ou 1, para afirmar
  * ou negar a informação.
  * 
@@ -551,8 +550,7 @@ void sairPause()
  * para que possa ser jogado novamente.
  * Nesse estado para voltar ao jogo é aguardado o pressionar do botão, para
  * poder retornar.
- * - Parametros:
- * - - histScore: uma variavel do tipo int que irá servir para poder
+ * @param histScore: uma variavel do tipo int que irá servir para poder
  * apresentar na tela o valor de pontuação feito naquele momento em que perdeu
  * 
  * --------------------------------------------------------------
@@ -627,8 +625,7 @@ void sairTelaParabens(){
  * 
  * Esta função serve para informar com um texto na tela, se o jogo esta pausado
  * caso não esteja nenhuma informação é apresentada.
- * - Parametros:
- * - - boolean: uma variavel do tipo int que irá servir para poder
+ * @param boolean: uma variavel do tipo int que irá servir para poder
  * para indicar se o jogo está em pause ou não, usando ela em verificação num "if"
  * logo, seus valores podem ser 1(True) ou 0(False)
  * 
@@ -654,10 +651,9 @@ void informacao_pause(int boolean)
  * Esta função serve para desenhar na tela uma bola especial. Para
  * isso é utilizada uma estrutura de duplo "for", e desenhado pixel
  * a pixel da bola, a fim de apresentar cores diversas na bola.
- * - Parametros:
- * - - centroX: variavel do tipo "int", que serve para indicar a posição
+ * @param centroX: variavel do tipo "int", que serve para indicar a posição
  * X inicial em que a bola deverá iniciar a ser renderizada.
- * - - centroY: variavel do tipo "int", que serve para indicar a posição
+ * @param centroY: variavel do tipo "int", que serve para indicar a posição
  * Y inicial em que a bola deverá iniciar a ser renderizada. 
  * 
  * --------------------------------------------------------------
@@ -732,6 +728,8 @@ void fechar_hardwares(){
  * apresentado na tela do terminal um print informando o erro.
  * Ainda é acertado alguns valores do acelerometro, como feita a sua calibração,
  * e formato de leitura.
+ * @return Inteiro informando que não possivel iniciar algum dos hardwares, caso
+ * isso aconteça
  * 
  * --------------------------------------------------------------
  */
@@ -1100,6 +1098,9 @@ void printTelaParabens()
  * qual a proxima operação a ser realizada, seja ela sair do jogo, ou
  * ir para o jogo.
  * 
+ * @return Retorno: variavel do tipo inteiro que indica se jogador apertou
+ * para sair do jogo, ou para jogar, ou seja se deu play, ou quit
+ * 
  * --------------------------------------------------------------
  */
 int telaInicial()
@@ -1180,14 +1181,14 @@ void gerar_bordas()
  * score na mesma formatação utilizada na palavra "SCORE".
  * Para melhor funcionamento e reuso, a função contém variaveis para 
  * permitir o deslocamento dos pixels para onde desejar dentro da tela.
- * - Parametros:
- * - -scoreInt: parametro do tipo inteiro que contém o valor do score obtido
+ * 
+ * @param scoreInt: parametro do tipo inteiro que contém o valor do score obtido
  * ate o momento pelo jogador. Esse valor irá ser passado para a função que
  * escreve o valor numerico na tela.
- * - -shift_X: parametro do tipo inteiro que contém o valor de quando o pixel
+ * @param shift_X: parametro do tipo inteiro que contém o valor de quando o pixel
  * deve ser deslocado para ser apresentado na tela no eixo X, quando não for
  * necessario o deslocamento, usa-se o valor 0;
- * - -shift_Y: parametro do tipo inteiro que contém o valor de quando o pixel
+ * @param shift_Y: parametro do tipo inteiro que contém o valor de quando o pixel
  * deve ser deslocado para ser apresentado na tela no eixo Y, quando não for
  * necessario o deslocamento, usa-se o valor 0;
  * 
@@ -1490,8 +1491,7 @@ void printTelaPerdeu()
  * Esta função serve para fazer o calculo da pontuação, baseando-se na
  * quantidade de blocos que ja foram destruidos. Cada bloco equivale a
  * 10 pontos.
- * - Retorno:
- * - -contador: uma variavel do tipo Int interna a função e que contabiliza
+ * @return contador: uma variavel do tipo Int interna a função e que contabiliza
  *  o valor da pontuação
  * 
  * --------------------------------------------------------------
@@ -1586,12 +1586,11 @@ void printBlocosInferiores()
  * @brief Função para desenhar numero 1
  * 
  * Esta função para desenhar na tela o numero 1
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1608,12 +1607,11 @@ void numeroOne(int x, int y, short cor)
  * @brief Função para desenhar numero 2
  * 
  * Esta função para desenhar na tela o numero 2
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1632,12 +1630,11 @@ void numeroTwo(int x, int y, short cor)
  * @brief Função para desenhar numero 3
  * 
  * Esta função para desenhar na tela o numero 3
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1655,12 +1652,11 @@ void numeroThree(int x, int y, short cor)
  * @brief Função para desenhar numero 4
  * 
  * Esta função para desenhar na tela o numero 4
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1679,12 +1675,11 @@ void numeroFour(int x, int y, short cor)
  * @brief Função para desenhar numero 5
  * 
  * Esta função para desenhar na tela o numero 5
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1703,12 +1698,11 @@ void numeroFive(int x, int y, short cor)
  * @brief Função para desenhar numero 6
  * 
  * Esta função para desenhar na tela o numero 6
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1727,12 +1721,11 @@ void numeroSix(int x, int y, short cor)
  * @brief Função para desenhar numero 7
  * 
  * Esta função para desenhar na tela o numero 7
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1750,12 +1743,11 @@ void numeroSeven(int x, int y, short cor)
  * @brief Função para desenhar numero 8
  * 
  * Esta função para desenhar na tela o numero 8
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1774,12 +1766,11 @@ void numeroEight(int x, int y, short cor)
  * @brief Função para desenhar numero 9
  * 
  * Esta função para desenhar na tela o numero 9
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1798,12 +1789,11 @@ void numeroNine(int x, int y, short cor)
  * @brief Função para desenhar numero 0
  * 
  * Esta função para desenhar na tela o numero 0
- * - Parametros:
- * - - X: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - cor: variavel para indicar de qual cor será desenhado o numero na tela
+ * @param cor: variavel para indicar de qual cor será desenhado o numero na tela
  * 
  * --------------------------------------------------------------
  */
@@ -1826,12 +1816,12 @@ void numeroZero(int x, int y, short cor)
  * Esta função para desenhar na tela os 3 digitos do valor da pontuação
  * fazendo o ordenamento, e deslocamentos necessarios para desenhar
  * cada digito na sua posição correta, assim como o digito correto
- * - Parametros:
- * - - desloc_X: valor inteiro que serve para indicar o deslocamento no eixo
+ * 
+ * @param desloc_X: valor inteiro que serve para indicar o deslocamento no eixo
  * X, podendo mudar a posição do mesmo nesse eixo
- * - - desloc_Y: valor inteiro que serve para indicar o deslocamento no eixo
+ * @param desloc_Y: valor inteiro que serve para indicar o deslocamento no eixo
  * Y, podendo mudar a posição do mesmo nesse eixo
- * - - Score: variavel inteira que contém o valor da pontuação que deverá ser
+ * @param Score: variavel inteira que contém o valor da pontuação que deverá ser
  * escrito na tela
  * 
  * --------------------------------------------------------------
@@ -1997,6 +1987,7 @@ void printValorScore(int Score, int desloc_X, int desloc_Y)
 
 /** 
  * --------------------------------------------------------------
+ * @brief Função para desenhar os blocos na tela
  * 
  * Esta função eh usada para percorrer o array de blocos e desenha cada bloco
  * na tela, se ele nao tiver destruído. Ela utiliza a função
@@ -2014,6 +2005,7 @@ void printValorScore(int Score, int desloc_X, int desloc_Y)
  * Antes de desenhar, a função olha se os bloco
  * estão dentro dos limites da tela para evitar desenhos fora da área
  * visível e problemas na hora de mostrar.
+ * 
  * --------------------------------------------------------------
  */
 void renderizarBlocos()
@@ -2050,6 +2042,8 @@ void renderizarBlocos()
  * 
  * Esta função serve para poder verificar se ainda existem blocos ativos, 
  * e então realizar o retorno informando se existem ou não
+ * @return inteiro para informar a existencia ou ausencia de blocos que ainda
+ * não foram destruidos
  * 
  * --------------------------------------------------------------
  */

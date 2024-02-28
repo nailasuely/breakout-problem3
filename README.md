@@ -60,7 +60,7 @@ Para implementar o jogo, foram utilizadas técnicas de programação em linguage
 
 Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicialização do ambiente de desenvolvimento até a implementação das funcionalidades principais, bem como os desafios enfrentados durante o processo de criação e as soluções escolhidas pela equipe. Além disso, também serão discutidas as possíveis melhorias para futuras versões do projeto.
 
-A respeito do codigo desenvolvido, é possível acessar sua documentação seja por meio do pdf, [latex__1_.pdf] (https://github.com/nailasuely/breakout-problem3/blob/main/src/doc/latex__1_.pdf), ou por meio de acesso utilizando o browser, em que se torna mais dinamico, contudo é necessario estar com o repositorio salvo na maquina, ou baixar apenas a [pasta](https://github.com/nailasuely/breakout-problem3/tree/main/src/doc/html) referente a documentação do codigo.
+A respeito do codigo desenvolvido, é possível acessar sua documentação seja por meio do pdf, [latex__1_.pdf](https://github.com/nailasuely/breakout-problem3/blob/main/src/doc/latex__1_.pdf), ou por meio de acesso utilizando o browser, em que se torna mais dinamico, contudo é necessario estar com o repositorio salvo na maquina, ou baixar apenas a [pasta](https://github.com/nailasuely/breakout-problem3/tree/main/src/doc/html) referente a documentação do codigo e abrir o arquivo [`index.html`](https://github.com/nailasuely/breakout-problem3/blob/main/src/doc/html/index.html).
 
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura%20(2).png">
 
@@ -379,7 +379,7 @@ A fim de obter um jogo com melhor jogabilidade e funcionamento, o uso dos botõe
 
 <div align="center">
   
-<img width="800px" src="hhttps://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
+<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
 
 </div>
 
@@ -402,7 +402,7 @@ Diante do funcionamento dos hardwares no sistema entendidos, a implementação d
 
 A presença desses testes de tela não exclui o fato de estar testando a maquina do jogo durante, já que para poder chegar em cada uma das telas, ha de se passar por um determinado fluxo de codigo, logo possiveis erros para se encontrar nesse momento, podiam ser detectados e corrigidos. O funcionamento do jogo em si, após o desenvolvimento das telas estar completo, tomou um tempo nos testes, dada a necessidade de correcao de erros que surgiam a cada implementação, visando um melhor funcionamento. Inicialmente com o teste de colisão da bola com as bordas da janela, e partindo para a colisao com a raquete, em que problemas como a bola não efetuar o ricocheteamento correto, foram pertinentes até conseguir solucionar. Outro problema de colisão ocorreu com os blocos para serem destruídos, em que o sentido reverso da bola não era ocorria conforme previsto. Os erros nesse momento ao testar a colisão, necessitavam de testes sucessivos, e por vezes longos, para tentar reproduzir a situacao em que ocoreu algum erro e verificar se a correção foi efetivada.
 
-Com esses testes dos hardwares, das telas e da logica do jogo, foi possivel chegar a um produto final satisfatorio, mas que ainda precisava de um teste simulando o uso real, passando pelas diversas situações integradas em um unico arquivo final, sem a interferencia de simplificações para testar casos isolados, para isso está documentado em [video] (https://youtu.be/t1MIjK76e3k), contendo o fluxo do jogo.
+Com esses testes dos hardwares, das telas e da logica do jogo, foi possivel chegar a um produto final satisfatorio, mas que ainda precisava de um teste simulando o uso real, passando pelas diversas situações integradas em um unico arquivo final, sem a interferencia de simplificações para testar casos isolados, para isso está documentado em [video](https://youtu.be/t1MIjK76e3k), contendo o fluxo do jogo.
 
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)

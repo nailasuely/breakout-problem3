@@ -32,7 +32,7 @@ gh repo clone nailasuely/breakout-problem3
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
 ## Sumário
-- [Visão Geral do Projeto](#Visao-Geral-do-Projeto)
+- [Visão Geral do Projeto](#visao-geral-do-projeto)
 - [Tecnologias e Ferramentas Utilizadas](#Tecnologias-e-Ferramentas-Utilizadas)
 - [Arquitetura do Kit de Desenvolvimento DE1-SoC](#Arquitetura-do-Kit-de-Desenvolvimento-DE1-SoC)
   -  [Visão Geral sobre comunicação de vídeo](#Visão-Geral-sobre-comunicação-de-vídeo)

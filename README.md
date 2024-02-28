@@ -18,7 +18,7 @@
 <img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/gif1.gif">
 
 
-> Esse é um projeto da disciplina TEC 499 - Módulo Integrador Sistemas Digitais, no qual ocorre o desenvolvimento de um jogo inspirado no clássico breakout. Utiliza o acelerômetro do DE1-SoC para controlar o jogador e botões para funções de jogo e a visualização é feita através da interface VGA em monitor CRT.
+> Esse é um projeto da disciplina TEC 499 - Módulo Integrador Sistemas Digitais, no qual ocorre o desenvolvimento de um jogo inspirado no clássico breakout. Este utiliza o acelerômetro do DE1-SoC para controlar o jogador e botões para funções de jogo e a visualização é feita através da interface VGA em monitor CRT.
 
 ## Download do repositório
 
@@ -60,6 +60,8 @@ Para implementar o jogo, foram utilizadas técnicas de programação em linguage
 
 Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicialização do ambiente de desenvolvimento até a implementação das funcionalidades principais, bem como os desafios enfrentados durante o processo de criação e as soluções escolhidas pela equipe. Além disso, também serão discutidas as possíveis melhorias para futuras versões do projeto.
 
+A respeito do codigo desenvolvido, é possível acessar sua documentação seja por meio do pdf, [latex__1_.pdf] (https://github.com/nailasuely/breakout-problem3/blob/main/src/doc/latex__1_.pdf), ou por meio de acesso utilizando o browser, em que se torna mais dinamico, contudo é necessario estar com o repositorio salvo na maquina, ou baixar apenas a [pasta](https://github.com/nailasuely/breakout-problem3/tree/main/src/doc/html) referente a documentação do codigo.
+
 <img width="" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/estrutura%20(2).png">
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
@@ -81,7 +83,7 @@ Neste README, serão detalhados os aspectos técnicos do jogo, desde a inicializ
 
 O [Kit de Desenvolvimento DE1-SoC](https://www.terasic.com.tw/cgi-bin/page/archive_download.pl?Language=China&No=836&FID=ae336c1d5103cac046279ed1568a8bc3) é uma plataforma de design de hardware construída em torno do FPGA System-on-Chip (SoC) da Altera. Este SoC integra os mais recentes núcleos embarcados Cortex-A9 dual-core, combinados com um sistema de processador baseado em ARM (HPS). Essa combinação oferece uma variedade de recursos, incluindo processador, periféricos e interfaces de memória, todos conectados à matriz FPGA através de uma espinha dorsal de alta largura de banda.
 
-Para gerar a imagem na tela, o jogo utiliza o módulo de vídeo da placa DE1-SoC, que é capaz de gerar gráficos em resolução VGA. A placa também possui 6 PLLs fracionários que podem ser usados para gerar diferentes frequências de clock para os diferentes componentes do sistema. nPara controle externo, o jogo utiliza o acelerômetro da placa DE1-SoC, que permite ao jogador controlar a barra movendo a placa. A placa também possui 2 controladores de memória rígidos que podem ser usados para conectar dispositivos de armazenamento externos, como um cartão SD. No caso do projeto é utilizado um cartão SD carregado com um sistema operacional.
+Para gerar a imagem na tela, o jogo utiliza o módulo de vídeo da placa DE1-SoC, que é capaz de gerar gráficos em resolução VGA. A placa também possui 6 PLLs fracionários que podem ser usados para gerar diferentes frequências de clock para os diferentes componentes do sistema. Para controle externo, o jogo utiliza o acelerômetro da placa DE1-SoC, que permite ao jogador controlar a barra movendo a placa. A placa também possui 2 controladores de memória rígidos que podem ser usados para conectar dispositivos de armazenamento externos, como um cartão SD. No caso do projeto é utilizado um cartão SD carregado com um sistema operacional.
 
 O DE1-SoC é equipado com memória DDR3 de alta velocidade, capacidades de vídeo e áudio, rede Ethernet e muito mais. O sistema oferece uma variedade de componentes e interfaces. Abaixo está uma visão detalhada dos componentes-chave presentes no DE1-SoC:
 
@@ -132,7 +134,7 @@ A interface de programação inclui um registrador de resolução, que armazena 
 
 ### Funções de vídeo utilizadas
 
-A biblioteca video_h, fornecida pela FPGACADEMY.ORG, desempenha um papel crucial na renderização dos elementos visuais do jogo no monitor CRT. A inclusão do cabeçalho #include <intelfpgaup/video.h> no código-fonte do jogo, permite o acesso a uma série de funções que simplificam a manipulação de gráficos. No código fonte do projeto foram atualizadas:
+A biblioteca video_h, fornecida pela [FPGACADEMY.ORG](https://fpgacademy.org/), desempenha um papel crucial na renderização dos elementos visuais do jogo no monitor CRT. A inclusão do cabeçalho #include <intelfpgaup/video.h> no código-fonte do jogo, permite o acesso a uma série de funções que simplificam a manipulação de gráficos. No código fonte do projeto foram atualizadas:
  
 1. `video_open()`: serve para abrir o dispositivo de vídeo VGA e  configura os parâmetros necessários para a comunicação com o monitor.
 
@@ -226,7 +228,7 @@ Para ilustrar o funcionamento detalhado da função “detectarColisaoRaquete()�
 
 ### Inicializar Blocos
 
-Essa função é utilizada para dispor os blocos na tela de maneira adequada. Durante a inicialização, a função percorre uma matriz de blocos com dimensões definidas pela quantidade de blocos na vertical e na horizontal. Cada bloco é caracterizado por sua posição X e Y, largura e altura, e cor.  O posicionamento dos blocos é calculado de acordo com a largura e altura de cada bloco, o espaçamento entre eles e as margens da tela para garantir a uniformidade deles na tela. 
+Essa função é utilizada para dispor os blocos na tela de maneira adequada. Durante a inicialização, a função percorre uma matriz de blocos com dimensões definidas pela quantidade de blocos na vertical e na horizontal. Cada bloco é caracterizado por sua posição X e Y, largura e altura, cor, e se foi destruído ou não.  O posicionamento dos blocos é calculado de acordo com a largura e altura de cada bloco, o espaçamento entre eles e as margens da tela para garantir a uniformidade deles na tela. 
 
 Cada bloco recebe uma cor única. A variação de cores é realizada com base na posição do bloco na matriz, para proporcionar um efeito visual de degradê. As cores são definidas gradativamente através da variação entre três cores base (cor1, cor2, cor3), que são mescladas de acordo com a posição do bloco em relação ao total de blocos em uma linha.
 
@@ -239,7 +241,7 @@ Para cada bloco que a função encontra, ela verifica se ele ainda não está de
 
 Ao desenhar um bloco na tela, a função utiliza as informações sobre as cores e posições do bloco em questão. Isso significa que cada bloco colorido será apresentado no local apropriado na tela. 
 
-Durante a jogo, conforme a bola colide com os blocos e eles são destruídos, a função renderizarBlocos() é novamente chamada para atualizar a tela e remover os blocos destruídos. É um processo dinâmico para manter o cenário do jogo sendo atualizado, lembrando da taxa de atualização da tela. 
+Durante a jogo, conforme a bola colide com os blocos e eles são destruídos, a função renderizarBlocos() é novamente chamada para atualizar a tela e não desenhar novamente os blocos destruídos. É um processo dinâmico para manter o cenário do jogo sendo atualizado, lembrando da taxa de atualização da tela. 
 
 
 
@@ -275,7 +277,7 @@ A função `KEY_read(&btn_data)` é responsável por ler o estado das teclas pre
    
 As funções de renderização da tela são chamadas para desenhar os elementos visuais:
 - As bordas do cenário são geradas com a função `gerar_bordas()`.
-- A pontuação do jogador é calculada e exibida na tela com a função `palavra_score()`.
+- A pontuação do jogador é calculada e exibida na tela com as funções `calcularScore()` e `palavra_score()`.
 - O movimento da raquete é controlado pela função `moverRaquete()`.
 - É verificada a ocorrência de colisão entre a bola e os blocos com `detectarColisao()`.
 - A colisão entre a bola e a raquete é verificada com `detectarColisaoRaquete()`.
@@ -284,7 +286,7 @@ As funções de renderização da tela são chamadas para desenhar os elementos 
 
 3. **Tratamento de Pausa**
    
-- Se o jogador pressionar o botão específico para pausar (0b0100), o jogo é pausado até que o jogador decida continuar com `sairPause()` que basicamente espera até que o jogador clique no botão de continuar.
+- Se o jogador pressionar o botão específico para pausar (0b0100), o jogo é pausado até que o jogador decida continuar, com `sairPause()` que basicamente espera até que o jogador clique no botão de continuar.
 
 4. **Atualização Visual**
 - A tela é atualizada para mostrar as alterações feitas durante a iteração do loop com `video_show()`.
@@ -309,7 +311,7 @@ Controles: O jogador controla a raquete movimentando a placa, fazendo assim a ra
 
 Raquete: O local onde a bola acerta a raquete que determina o ângulo que a bola volta, na metade esquerda volta no ângulo espelhado e na metade direita volta no mesmo ângulo.
 
-Jogabilidade: O jogo começa com a bola sendo lançada em direção aos blocos e cada bloco vale 10 pontos, ganha o jogo quem conseguir destruir todos os blocos.
+Jogabilidade: O jogo começa com a bola sendo lançada em direção a raquete para poder realizar, caso acerte, a primeira inversão de sentido de movimento para ir atingir os blocos, e cada bloco vale 10 pontos, ganha o jogo quem conseguir destruir todos os blocos.
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
 
@@ -317,10 +319,10 @@ Jogabilidade: O jogo começa com a bola sendo lançada em direção aos blocos e
 
 Para utilizar o jogo, siga as instruções abaixo:
 
-1. Certifique-se de que a placa DE1-SoC esteja corretamente conectada ao monitor CRT através da interface VGA.
+1. Certifique-se de que a placa DE1-SoC esteja corretamente conectada ao monitor CRT através da interface VGA, assim como ao cabo RJ45 de Internet.
 
 2. Clone o repositório do jogo na placa DE1-SoC seguindo as etapas abaixo:
-   - Conecte-se à rede SSH da placa usando um dos seguintes comandos:
+   - Conecte-se à rede SSH da placa usando um dos seguintes comandos, em que muda o endereço a depender da placa em que esteja-se utilizando:
      ```
      ssh aluno@10.0.0.120
      ssh aluno@10.0.0.121
@@ -333,7 +335,7 @@ Para utilizar o jogo, siga as instruções abaixo:
 
 4. Inicie o jogo pressionando o primeiro botão, “key-3”, na placa DE1-SoC.
 
-5. Utilize o acelerômetro embutido na placa DE1-SoC para mover a barra para a esquerda e para a direita.
+5. Utilize do acelerômetro embutido na placa DE1-SoC para mover a barra para a esquerda e para a direita.
 
 6. Pressione o botão 3, “key-1” para sair durante o jogo.
 
@@ -347,7 +349,7 @@ Para utilizar o jogo, siga as instruções abaixo:
 ## Testes
 Nesse projeto foi utilizado uma estratégia modular, ou seja os testes foram realizados de forma unitária em funcionalidades que eram de suma importância para o andamento do projeto. Foram utilizados códigos separados que tinham o objetivo de apenas confirmar e entender sobre o funcionamento do sistema de maneira coerente. Com o melhor entendimento e desenvolvimento os testes passaram a ser de funcionalidades mais completas. 
 
-O primeiro módulo separado tinha como objetivo aprender o funcionamento do acelerômetro embutido na FPGA. O código em si depende das APIs fornecidas pela Intel FPGA para acessar e controlar o acelerômetro. No caso do código, são utilizadas funções como accel_open(), accel_init(), accel_format(), accel_calibrate(), accel_read(), e accel_close(). É escrito na tela o valor de x enquanto é feita a movimentação da placa, para verificar sua oscilação, e quais os valores eram retornados para então saber como usá-los no programa completo.
+O primeiro módulo separado tinha como objetivo aprender o funcionamento do acelerômetro embutido na FPGA. O código em si depende das bibliotecas fornecidas pela Intel FPGA para acessar e controlar o acelerômetro. No caso do código, são utilizadas funções como accel_open(), accel_init(), accel_format(), accel_calibrate(), accel_read(), e accel_close() para configurar e ler dados do acelerometro. Com as informações colhidas, é escrito na tela o valor de x enquanto é feita a movimentação da placa, para verificar sua oscilação, e quais os valores eram retornados para então saber como usá-los no programa completo. Essa visualização pode ser vista na tela do terminal apresentada abaixo.
 
 <div align="center">
   
@@ -355,7 +357,7 @@ O primeiro módulo separado tinha como objetivo aprender o funcionamento do acel
 
 </div>
 
-Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalidades que a porta VGA proporciona. Logo foi criado um módulo para verificar as funções pré-existentes da biblioteca “video”, usando como auxiliar um código exemplo disponibilizado no site da FPGA Academy. A partir deste foi possível compreender melhor o funcionamento para criar um módulo próprio, em que foram testadas as funções de uso do video e compreendido melhor o seu funcionamento.
+Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalidades que a porta VGA proporciona. Logo foi criado um módulo para verificar as funções pré-existentes da biblioteca “video”, usando como auxiliar um código exemplo disponibilizado no site da FPGA Academy. A partir deste foi possível compreender melhor o funcionamento para criar um módulo próprio, em que foram testadas as funções de uso do video, como o video_box(), video_line(), video_read(), video_clear(), e video_erase(), e então geradas os primeiros testes de tela, que vieram a compor a tela do projeto final. Nas imagens é possível ver, na primeira um prototipo de borda e de raquete, ja na segunda imagem a borda ja mais desenvolvida, e prototipo de tamanho de bloco, e como ele apareceria na tela durante o jogo.
 
 <div align="center">
   
@@ -365,7 +367,7 @@ Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalid
 
 </div>
 
-Com o entendimento sobre o funcionamento de como reproduzir video, além de como colher os valores do acelerômetro, foi o momento de mesclar ambos os hardwares em um único código, este que após aperfeiçoamento tornou-se a função de movimentar a raquete presente no código final.
+Com o entendimento sobre o funcionamento de como reproduzir video, além de como colher os valores do acelerômetro, foi o momento de mesclar ambos os hardwares em um único código, para testar gerar um elemento que se move a depender do valor lido pelo acelerometro. Este que após aperfeiçoamento tornou-se a função de movimentar a raquete presente no código final. O teste inicial foi necessario para entender o comportamento que o elemento teria, além de perceber a alta sensibilidade do sensor, e a necessidade de reduzir em 10 vezes para melhor jogabilidade. O gif abaixo permite visualizar a tela com a raquete se movendo, de acordo com o movimento da placa.
 
 <div align="center">
   
@@ -373,20 +375,24 @@ Com o entendimento sobre o funcionamento de como reproduzir video, além de como
 
 </div>
 
-A fim de obter um jogo com melhor jogabilidade e funcionamento, o uso dos botões presentes na placa DE1-SoC, foram de grande utilidade. Esse hardware foi último a ser testado, e seguindo a lógica dos testes anteriores, foi criado um módulo para teste unitário do mesmo, e após integração deste no arquivo de trabalho principal.
-
-Diante do funcionamento dos hardwares no sistema entendidos, a implementação do jogo pode prosseguir com o desenvolvimento da lógica de funcionamento, além da construção das telas que são visualizadas durante o jogo. Sendo assim, para visualizar a imagem desenhada na tela de forma prática, manipulações no código fizeram-se necessárias. Estas aconteciam com o retirar de condicionais para funcionamento do jogo, para fazer com que chegar até a tela desejada torna-se algo mais rápido e simples. Essas manipulações foram de grande utilidade para testar a tela de parabéns, visto que não necessitava quebrar todos os blocos para visualizar, e ao realizar o teste se o fluxo do jogo levaria até ela, usou-se da estratégia de diminuir a quantidade de blocos, afim de facilitar a chegada até ela e verificação de quebra de todos os blocos. Outro teste relacionado ao vídeo foi a exibição do valor da pontuação se estava na posição correta, ja que o texto aparece na tela durante o jogo, assim como na tela de “game over” em outra posição.
+A fim de obter um jogo com melhor jogabilidade e funcionamento, o uso dos botões presentes na placa DE1-SoC, foram de grande utilidade. Esse hardware foi último a ser testado, e seguindo a lógica dos testes anteriores, foi criado um módulo para teste unitário do mesmo, e após integração deste no arquivo de trabalho principal. Ao integra-lo no arquivo principal, foi testado o funcionamento para verificar se a função "sair" ocorria conforme esperado, assim como com o pause do jogo, e com isso ja conseguia testar também a logica do codigo, se estava coerente. Esse ultimo pode ser visualizado na imagem, em que no canto superior direito apresenta o texto indicando que o jogo está pausado.
 
 <div align="center">
   
 <img width="800px" src="hhttps://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
 
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.jpg">
+</div>
 
+Diante do funcionamento dos hardwares no sistema entendidos, a implementação do jogo pode prosseguir com o desenvolvimento da lógica de funcionamento, além da construção das telas que são visualizadas durante o jogo. Sendo assim, para visualizar a imagem desenhada na tela de forma prática, manipulações no código fizeram-se necessárias. Estas aconteciam com o retirar de condicionais para funcionamento do jogo, para fazer com que chegar até a tela desejada torna-se algo mais rápido e simples. Essas manipulações foram de grande utilidade para testar a tela de parabéns, visto que não necessitava quebrar todos os blocos para visualizar, visto que dos 60 blocos, era posto para apresentar apenas 1 bloco para destruir, e ao realizar o teste se o fluxo do jogo levaria até ela, usou-se dessa estratégia, afim de facilitar a chegada até ela e verificação de quebra de todos os blocos. Esse teste é visivel com o visualizar do primeiro gif abaixo. Outro teste relacionado ao vídeo foi a exibição do valor da pontuação se estava na posição correta, ja que o texto aparece na tela durante o jogo, assim como na tela de “game over” em outra posição. Ainda sobre o teste de apresentação de telas, houve também o momento de ver a tela de "game over" aparente quando o jogador perde, ao deixar a bola ultrapassar a borda inferior, e o resultado dessa tela pode ser visto na imagem da sequencia abaixo, assim como no gif.
 
+<div align="center">
+  
 <a href="https://youtu.be/g64wYvrjTxM">
   <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/tela_de_parabens_1.gif">
 </a>
+
+<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.jpg">
+
 <br>
 <a href="https://youtu.be/yls5UNrVokE">
   <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/perdendo_o_jogo_1.gif">
@@ -394,20 +400,9 @@ Diante do funcionamento dos hardwares no sistema entendidos, a implementação d
 
 </div>
 
+A presença desses testes de tela não exclui o fato de estar testando a maquina do jogo durante, já que para poder chegar em cada uma das telas, ha de se passar por um determinado fluxo de codigo, logo possiveis erros para se encontrar nesse momento, podiam ser detectados e corrigidos. O funcionamento do jogo em si, após o desenvolvimento das telas estar completo, tomou um tempo nos testes, dada a necessidade de correcao de erros que surgiam a cada implementação, visando um melhor funcionamento. Inicialmente com o teste de colisão da bola com as bordas da janela, e partindo para a colisao com a raquete, em que problemas como a bola não efetuar o ricocheteamento correto, foram pertinentes até conseguir solucionar. Outro problema de colisão ocorreu com os blocos para serem destruídos, em que o sentido reverso da bola não era ocorria conforme previsto. Os erros nesse momento ao testar a colisão, necessitavam de testes sucessivos, e por vezes longos, para tentar reproduzir a situacao em que ocoreu algum erro e verificar se a correção foi efetivada.
 
-
-Outro teste de lógica do jogo ocorreu ao testar o botão pause, em que envolvia manipular o vídeo, e os botões. Nesse momento implementado já no código principal para o “pause” ser visível, além de ver o nome “pause” na tela e ajustado na posição correta. Como pode ser visto na imagem.
-
-<div align="center">
-  
-<img width="800px" src="hhttps://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
-
-</div>
-
-
-Com as imagens já melhor  desenvolvidas, o funcionamento do jogo tomou um tempo nos testes, dada a necessidade de correcao de erros que surgiam a cada implementação, visando um melhor funcionamento. Inicialmente com o teste de colisão da bola com as bordas da janela, e partindo para a colisao com a raquete, em que problemas como a bola não efetuar o ricocheteamento correto, foram pertinentes até conseguir solucionar. Outro problema de colisão ocorreu com os blocos para serem destruídos, em que o sentido reverso da bola não era ocorria conforme previsto. Os erros nesse momento ao testar a colisão, necessitavam de testes sucessivos, e por vezes longos, para tentar reproduzir a situacao em que ocoreu algum erro e verificar se a correção foi efetivada.
-Por fim, com o fim da implementação, foram realizados testes para confirmar o funcionamento do jogo, e ao encontrar possíveis erros efetuar as devidas correções. O vídeo apresenta um dos testes realizados, com presença da tela inicial, tela de “game over”, tela de parabéns, e a interação entre elas ocorrendo conforme esperado.
-
+Com esses testes dos hardwares, das telas e da logica do jogo, foi possivel chegar a um produto final satisfatorio, mas que ainda precisava de um teste simulando o uso real, passando pelas diversas situações integradas em um unico arquivo final, sem a interferencia de simplificações para testar casos isolados, para isso está documentado em [video] (https://youtu.be/t1MIjK76e3k), contendo o fluxo do jogo.
 
 
 ![-----------------------------------------------------](https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/prancheta.png)
@@ -420,6 +415,8 @@ Por fim, o projeto do jogo Breakout foi concluído com sucesso, alcançando os o
 A interação com os dispositivos de hardware, em especial o 3D-acelerômetro e o vídeo VGA, ocorreu de maneira eficiente, garantindo movimentos suaves e uma experiência de jogo responsiva. O monitor CRT com resolução de 640x480 e taxa de atualização de 60Hz contribuiu para a exibição nítida, proporcionando a experiência visual do jogo. 
 
 Contudo, também são necessárias melhorias futuras no projeto. Uma possível implementação seria a adição de uma funcionalidade de salvamento de progresso na memória, permitindo aos jogadores retomarem o jogo de onde pararam em sessões posteriores. Isso proporciona uma experiência mais conveniente, sem a necessidade de reiniciar o jogo a cada nova partida sem perder o progresso alcançado.
+
+Outrossim, ao lidar com uso de memória para persistencia de dados, poderia adicionar a implementação o salvar da maior pontuação realizada por qualquer jogador que tenha utilizado o jogo naquela pasta. Com isso, refletiria em uma pontuação recorde aparente, e que haveria a motivação para o jogador atual tentar alcançar e passar do valor de pontuação.
 
 Em resumo, o projeto do jogo Breakout não apenas demonstrou a capacidade de integrar software e hardware de forma eficaz, mas também ofereceu uma experiência de jogo imersiva e interativa aos usuários. A interação com o acelerômetro, o monitor CRT e a renderização gráfica foram elementos fundamentais para o sucesso do projeto, que pode servir como um exemplo prático de aplicação de conceitos de sistemas digitais em um contexto de entretenimento.
 
@@ -446,3 +443,7 @@ Em resumo, o projeto do jogo Breakout não apenas demonstrou a capacidade de int
     </a>
 </div>
 
+
+## Referências 
+> - [1] Terasic. (2024). https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=1#contents
+> - [2] FPGAcademy. (2024). https://fpgacademy.org/

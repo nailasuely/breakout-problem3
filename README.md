@@ -361,9 +361,10 @@ Para o desenvolvimento do jogo, também fez-se necessário testar as funcionalid
 
 <div align="center">
   
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.jpg">
-
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/imagem_no_monitor.jpg">
+<div style="display: flex; justify-content: space-between;">
+  <img width="400px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Teste_monitor.png" alt="Imagem 1">
+  <img width="400px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/imagem_no_monitor.png" alt="Imagem 2">
+</div>
 
 </div>
 
@@ -379,7 +380,7 @@ A fim de obter um jogo com melhor jogabilidade e funcionamento, o uso dos botõe
 
 <div align="center">
   
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Pause.jpg">
+<img width="600px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/pause.png">
 
 </div>
 
@@ -391,7 +392,7 @@ Diante do funcionamento dos hardwares no sistema entendidos, a implementação d
   <img src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/tela_de_parabens_1.gif">
 </a>
 
-<img width="800px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.jpg">
+<img width="600px" src="https://github.com/nailasuely/breakout-problem3/blob/main/assets/img/Tela_game_over.png">
 
 <br>
 <a href="https://youtu.be/yls5UNrVokE">
